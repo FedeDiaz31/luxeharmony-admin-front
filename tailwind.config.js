@@ -11,6 +11,18 @@ module.exports = {
       'laptop': '1024px',
       'desktop': '1380px',
     },
+    colors: {
+      bgPrimaryColor: "#FCFBFD",
+      bgSecondaryColor: "black",
+      bgTertiaryColor: "#85734D",
+      bgForthColor: "#dcdcdc",
+      textPrimary: "#FEFEFE",
+      textSecondary: "black",
+      textTertiary: "#717171",
+      buttonsPrimaryColor: "#85734D",
+      buttonsSecondaryColor: "black",
+      headerAndFooterColor: "#292728",
+    }
   },
   plugins: [],
 }
