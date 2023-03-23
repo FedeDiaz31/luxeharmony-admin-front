@@ -10,7 +10,7 @@ function CardDashboard({ title, value }) {
           <h5 className="text-[2rem] font-semibold m-0 p-0">{value}</h5>
         </div>
       </div>
-      <div className="bg-bgSecondaryColor mt-3 text-center p-3 text-bgPrimaryColor font-semibold cursor-pointer hover:bg-headerAndFooterColor rounded transition-all duration-200">
+      <div className="bg-bgSecondaryColor mt-3 text-center p-3 text-bgPrimaryColor font-semibold cursor-pointer hover:bg-headerAndFooterColor rounded-b transition-all duration-200">
         <h3>More info</h3>
       </div>
     </div>

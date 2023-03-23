@@ -6,17 +6,25 @@ import Clients from "./routes/Clients";
 import Orders from "./routes/Orders";
 import Products from "./routes/Products";
 import Layout from "./layout/Layout";
+import Login from "./routes/Login";
+import NoAuthRequire from "./hooks/NoAuthRequire";
+import AuthRequire from "./hooks/AuthRequire";
 
 function App() {
   return (
     <div className="">
       <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/products" element={<Products />} />
+        <Route element={<NoAuthRequire />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+        <Route element={<AuthRequire />}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/products" element={<Products />} />
+          </Route>
         </Route>
       </Routes>
     </div>

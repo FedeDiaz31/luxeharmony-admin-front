@@ -4,7 +4,7 @@ import "../animation/Animations.css";
 function Dashboard() {
   return (
     <div className="p-5 fade-in">
-      <div>
+      <div className="px-10">
         <h3 className="font-semibold text-2xl">Dashborad</h3>
       </div>
       <div className="mt-5">

@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-function ProductTableBody({ user }) {
+function ClientTableBody({ client }) {
   return (
     <li className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200">
       {/* <div className="w-8/12">
@@ -8,18 +8,20 @@ function ProductTableBody({ user }) {
       </div> */}
       <div className="w-full">
         <h3 className="font-semibold">
-          {user.firstname} {user.lastname}
+          {client.firstname} {client.lastname}
         </h3>
       </div>
       <div className="w-full text-end">
-        <h3 className="text-textTertiary hidden laptop:block">{user.email}</h3>
+        <h3 className="text-textTertiary hidden laptop:block">
+          {client.email}
+        </h3>
       </div>
       <div className="w-full text-end ">
-        <h3 className="text-textTertiary">{user.orders.length}</h3>
+        <h3 className="text-textTertiary">{client.orders.length}</h3>
       </div>
       <div className="w-full text-end hidden laptop:block">
         <h3 className="text-textTertiary">
-          {format(new Date(user.createdAt), "dd'/'M'/'yy")}
+          {format(new Date(client.createdAt), "dd'/'M'/'yy")}
         </h3>
       </div>
       <div className="w-full text-end">
@@ -31,4 +33,4 @@ function ProductTableBody({ user }) {
   );
 }
 
-export default ProductTableBody;
+export default ClientTableBody;
