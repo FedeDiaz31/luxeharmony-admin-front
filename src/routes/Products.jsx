@@ -17,8 +17,23 @@ function Products() {
 
   return (
     <div className="p-5 fade-in">
-      <div>
+      <div className="flex w-full justify-between items-center gap-3 px-10">
         <h3 className="font-semibold text-2xl">Products</h3>
+        <div className="flex gap-3 ">
+          <div className="bg-bgPrimaryColor  px-2 py-1">
+            <input
+              className="rounded w-72 mr-2"
+              type="text"
+              name=""
+              id=""
+              placeholder="Buscar productos"
+            />
+            <button>🔍</button>
+          </div>
+          <button className="bg-bgSecondaryColor text-textPrimary px-3 rounded">
+            +
+          </button>
+        </div>
       </div>
       <div className="flex font-semibold text-lg px-5 mt-5">
         <div className="w-8/12"></div>

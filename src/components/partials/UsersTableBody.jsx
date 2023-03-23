@@ -14,19 +14,19 @@ function ProductTableBody({ user }) {
       <div className="w-full text-end">
         <h3 className="text-textTertiary hidden laptop:block">{user.email}</h3>
       </div>
-      <dvi className="w-full text-end ">
+      <div className="w-full text-end ">
         <h3 className="text-textTertiary">{user.orders.length}</h3>
-      </dvi>
-      <dvi className="w-full text-end hidden laptop:block">
+      </div>
+      <div className="w-full text-end hidden laptop:block">
         <h3 className="text-textTertiary">
           {format(new Date(user.createdAt), "dd'/'M'/'yy")}
         </h3>
-      </dvi>
-      <dvi className="w-full text-end">
+      </div>
+      <div className="w-full text-end">
         <button className=" hover:bg-bgPrimaryColor text-textPrimary px-3 py-1 rounded-b-md transition-all duration-200 font-bold">
           <img className="w-6" src="edit-icon.png" alt="" />
         </button>
-      </dvi>
+      </div>
     </li>
   );
 }
