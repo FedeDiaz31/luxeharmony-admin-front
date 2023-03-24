@@ -15,6 +15,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
   const [showImage, setShowImage] = useState(product.image[0]);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [brandName, setBrandName] = useState(product.brand.name);
+  const oldBrand = product.brand.name;
   const [model, setModel] = useState(product.model);
   const [subtitle, setSubtitle] = useState(product.subtitle);
   const [price, setPrice] = useState(product.price);
@@ -49,6 +50,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
     formData.append("stock", stock);
     formData.append("slug", slug);
     formData.append("product", product._id);
+    formData.append("oldBrand", oldBrand);
     await axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}/products/${slug}`,
