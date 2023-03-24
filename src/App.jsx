@@ -9,6 +9,7 @@ import Layout from "./layout/Layout";
 import Login from "./routes/Login";
 import NoAuthRequire from "./hooks/NoAuthRequire";
 import AuthRequire from "./hooks/AuthRequire";
+import Brands from "./routes/Brands";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/clients" element={<Clients />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/brands" element={<Brands />} />
           </Route>
         </Route>
       </Routes>
