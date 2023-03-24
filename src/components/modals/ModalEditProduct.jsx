@@ -14,8 +14,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
 
   const [showImage, setShowImage] = useState(product.image[0]);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
-
-  const [brand, setBrand] = useState(product.brand.name);
+  const [brandName, setBrandName] = useState(product.brand.name);
   const [model, setModel] = useState(product.model);
   const [subtitle, setSubtitle] = useState(product.subtitle);
   const [price, setPrice] = useState(product.price);
@@ -39,19 +38,18 @@ function ModalProduct({ handleCloseModalProduct, product }) {
     getBrands();
   }, []);
 
-  console.log(brands);
-
   /*   PATCH PRODUCT */
   const handleEditProduct = async () => {
     const formData = new FormData();
-    formData.append("brand", brand);
+    formData.append("brand", brandName);
     formData.append("model", model);
     formData.append("subtitle", subtitle);
     formData.append("description", description);
     formData.append("price", price);
     formData.append("stock", stock);
     formData.append("slug", slug);
-    const res = await axios({
+    formData.append("product", product._id);
+    await axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}/products/${slug}`,
       data: formData,
@@ -119,7 +117,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                 </div>
               </div>
               {/*             FORM EDIT PRODUCT */}
-              <div className="flex flex-col ml-10">
+              <div className="flex flex-col laptop:ml-10">
                 <h2 className="font-bold text-lg">Edit Product</h2>
                 <div className="min-h-[250px]">
                   {showMoreInfo ? (
@@ -220,17 +218,20 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                           </label>
                           <div className="bg-bgForthColor px-2 py-1 rounded flex items-center">
                             <select
-                              onChange={(e) => setBrand(e.target.value)}
+                              onChange={(e) => setBrandName(e.target.value)}
                               className="rounded bg-bgForthColor w-72 mr-2 py-1 px-1"
                               type="text"
                               name="brand"
                               id="brand"
-                              value={brand}
+                              value={brandName}
                             >
                               {brands
                                 ? brands.map((brand) => {
                                     return (
-                                      <option key={brand._id} value={brand._id}>
+                                      <option
+                                        key={brand._id}
+                                        value={brand.name}
+                                      >
                                         {brand.name}
                                       </option>
                                     );
