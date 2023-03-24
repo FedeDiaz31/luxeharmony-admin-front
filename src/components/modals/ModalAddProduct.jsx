@@ -5,10 +5,8 @@ import { useState } from "react";
 
 import Spinner from "../partials/Spinner";
 
-function ModalProduct({ handleCloseModalProduct, product }) {
-  const [showImage, setShowImage] = useState(product.image[0]);
+function ModalProduct({ handleCloseModalProduct }) {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
-
   /*   Close with ESC Function */
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
@@ -23,11 +21,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
           className="fixed inset-0 bg-[#0f0f0f7e] cursor-pointer fade-in-fast z-20"
           onClick={handleCloseModalProduct}
         ></div>
-        {!product ? (
-          <div className="flex justify-center">
-            <Spinner />
-          </div>
-        ) : (
+      
           <div className="inline-block bg-bgPrimaryColor rounded-lg shadow-lg transform transition-all fade-in-fast duration-300 modal z-30 mt-12">
             <button
               className="absolute right-[-5px] top-[-5px] h-6 w-6 flex border justify-center border-bgSecondaryColor bg-bgPrimaryColor hover:bg-bgSecondaryColor rounded-full text-sm translate-all duration-150 font-bold hover:text-bgPrimaryColor"
@@ -38,32 +32,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
             {/*             Form Edit Product */}
             <div className="flex text-white items-center p-5 px-10">
               {/*                 Images Info of Product */}
-              <div className="hidden laptop:block">
-                <img
-                  className="hidden h-[200px] mix-blend-multiply tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
-                  src={showImage}
-                  alt=""
-                />
-                <div className="flex justify-center gap-2 items-center">
-                  {product.image.map((image, i) => {
-                    return !image ? (
-                      <div className="flex justify-center">
-                        <Spinner />
-                      </div>
-                    ) : (
-                      <img
-                        key={i}
-                        onClick={() => setShowImage(image)}
-                        className="w-14 mix-blend-multiply h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
-                        src={image}
-                      />
-                    );
-                  })}
-                  <button className="ml-2 bg-bgForthColor text-bgSecondaryColor px-3 h-8 rounded text-lg font-semibold">
-                    +
-                  </button>
-                </div>
-              </div>
+        
               <div className="flex flex-col ml-10">
                 <h2 className="font-bold text-lg">Edit Product</h2>
                 <div className="min-h-[250px]">
@@ -108,7 +77,6 @@ function ModalProduct({ handleCloseModalProduct, product }) {
               </div>
             </div>
           </div>
-        )}
       </div>
     </div>
   );

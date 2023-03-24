@@ -3,9 +3,13 @@ import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import ProductTableBody from "../components/partials/ProductTableBody";
 import "../animation/Animations.css";
+import ModalAddProduct from '../components/modals/ModalAddProduct'
 
 function Products() {
   const [products, setProducts] = useState(null);
+  const [showModal, setShowModal] =useState(false);
+  const handleCloseModalProduct = () => setShowModal(false);
+  const handleShowModalProduct = () => setShowModal(true);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -17,6 +21,7 @@ function Products() {
 
   return (
     <>
+    { showModal && <ModalAddProduct handleCloseModalProduct={handleCloseModalProduct} /> }
       <div className="p-5 fade-in">
         <div className="flex w-full justify-between items-center gap-3 px-10">
           <h3 className="font-bold text-2xl">Products</h3>
@@ -33,7 +38,7 @@ function Products() {
                 <img className="w-4" src="search-icon.png" alt="" />
               </button>
             </div>
-            <button className="bg-bgSecondaryColor text-textPrimary px-3 h-8 rounded text-lg font-semibold">
+            <button onClick={handleShowModalProduct} className="bg-bgSecondaryColor text-textPrimary px-3 h-8 rounded text-lg font-semibold">
               +
             </button>
           </div>
