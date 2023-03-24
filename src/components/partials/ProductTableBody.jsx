@@ -1,9 +1,8 @@
 import { useState } from "react";
-import ModalProduct from "../ModalProduct";
+import ModalProduct from "../modals/ModalEditProduct";
 
 function ProductTableBody({ product }) {
   const [showModal, setShowModal] = useState(false);
-
   const handleCloseModalProduct = () => setShowModal(false);
   const handleShowModalProduct = () => setShowModal(true);
   return (
@@ -26,7 +25,7 @@ function ProductTableBody({ product }) {
           <img className="w-6 rotate-12 z-0" src={product.image[0]} />
         </div>
         <div className="w-full">
-          <h3 className="font-semibold">{product.brand}</h3>
+          <h3 className="font-semibold">{product.brand.name}</h3>
         </div>
         <div className="w-full">
           <h3 className="font-semibold">{product.model}</h3>

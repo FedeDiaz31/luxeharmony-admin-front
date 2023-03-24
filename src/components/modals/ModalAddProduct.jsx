@@ -1,10 +1,9 @@
 /* CSS */
-import "../animation/Animations.css";
+import "../../animation/Animations.css";
 /* Componentes */
 import { useState } from "react";
-import BasicInfoProduct from "./partials/BasicInfoProduct";
-import MoreInfoProduct from "./partials/MoreInfoProduct";
-import Spinner from "./partials/Spinner";
+
+import Spinner from "../partials/Spinner";
 
 function ModalProduct({ handleCloseModalProduct, product }) {
   const [showImage, setShowImage] = useState(product.image[0]);
@@ -41,7 +40,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
               {/*                 Images Info of Product */}
               <div className="hidden laptop:block">
                 <img
-                  className="hidden h-[200px] tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
+                  className="hidden h-[200px] mix-blend-multiply tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
                   src={showImage}
                   alt=""
                 />
@@ -55,7 +54,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                       <img
                         key={i}
                         onClick={() => setShowImage(image)}
-                        className="w-14 h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
+                        className="w-14 mix-blend-multiply h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
                         src={image}
                       />
                     );
@@ -67,41 +66,43 @@ function ModalProduct({ handleCloseModalProduct, product }) {
               </div>
               <div className="flex flex-col ml-10">
                 <h2 className="font-bold text-lg">Edit Product</h2>
-                <div className="min-h-[320px]">
+                <div className="min-h-[250px]">
                   {showMoreInfo ? (
-                    <div className="w-full">
-                      {/*                     Basic Info of Product */}
-                      <MoreInfoProduct product={product} />
-                      {/*                     More Info of Product */}
+                    <div className="w-full fade-in">
+                      {/*                    Page 1 Edit of Product */}
                     </div>
                   ) : (
-                    <div className="fade-in">
-                      {/*                     Basic Info of Product */}
-                      <BasicInfoProduct product={product} />
-                      {/*                     More Info of Product */}
+                    <div className="slide-top">
+                      {/*                     Page 2 Edit of Product */}
                     </div>
                   )}
                 </div>
-                <div className="flex justify-center gap-16 font-bold mt-5">
-                  <button
-                    className={
-                      showMoreInfo
-                        ? "bg-bgForthColor text-textSecondary px-8 rounded  transition-all duration-200"
-                        : "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
-                    }
-                    onClick={() => setShowMoreInfo(false)}
-                  >
-                    1
-                  </button>
-                  <button
-                    className={
-                      showMoreInfo
-                        ? "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
-                        : "bg-bgForthColor text-textSecondary px-8 rounded transition-all duration-200"
-                    }
-                    onClick={() => setShowMoreInfo(true)}
-                  >
-                    2
+                <div className="mt-5 flex flex-col  items-center">
+                  <div className="flex justify-center gap-3 font-bold">
+                    <button
+                      className={
+                        showMoreInfo
+                          ? "bg-bgForthColor text-textSecondary px-8 rounded  transition-all duration-200"
+                          : "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                      }
+                      onClick={() => setShowMoreInfo(false)}
+                    >
+                      1
+                    </button>
+                    <button
+                      className={
+                        showMoreInfo
+                          ? "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                          : "bg-bgForthColor text-textSecondary px-8 rounded transition-all duration-200"
+                      }
+                      onClick={() => setShowMoreInfo(true)}
+                    >
+                      2
+                    </button>
+                  </div>
+                  <button className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary">
+                    <img className="w-8" src="edit-icon.png" alt="" />
+                    <h2 className="font-bold">Edit</h2>
                   </button>
                 </div>
               </div>
