@@ -1,7 +1,29 @@
 import CardDashboard from "../components/partials/CardDashboard";
+import OrderTableBody from "../components/partials/OrderTableBody";
+import { useSelector } from "react-redux";
+import axios from "axios";
 import "../animation/Animations.css";
+import { useEffect, useState } from "react";
+import Spinner from "../components/partials/Spinner";
 
 function Dashboard() {
+  const [orders, setOrders] = useState(null);
+  const user = useSelector((state) => state.user);
+
+  useEffect(() => {
+    const getOrders = async () => {
+      const response = await axios({
+        headers: {
+          Authorization: `Bearer ${user.admin.token}`,
+        },
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}/orders/last`,
+      });
+      setOrders(response.data);
+    };
+    getOrders();
+  }, []);
+
   return (
     <div className="p-5 fade-in">
       <div className="px-10">
@@ -17,11 +39,17 @@ function Dashboard() {
       </div>
       <div className="mt-5">
         <h4 className="my-5 ml-10 font-semibold">Last 10 orders</h4>
-        {/*         <div>
-          {orders.map((order, i) => {
-            return <Order key={i} order={order} />;
-          })}
-        </div> */}
+        <div className="flex flex-col gap-1">
+          {!orders ? (
+            <div className="w-full flex justify-center mt-24">
+              <Spinner />
+            </div>
+          ) : (
+            orders.map((order, i) => {
+              return <OrderTableBody key={i} order={order} />;
+            })
+          )}
+        </div>
       </div>
     </div>
   );

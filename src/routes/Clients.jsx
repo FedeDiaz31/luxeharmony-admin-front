@@ -33,7 +33,7 @@ function Users() {
               type="text"
               name=""
               id=""
-              placeholder="Buscar productos"
+              placeholder="Search clients"
             />
             <button>
               <img className="w-4" src="search-icon.png" alt="" />

@@ -34,7 +34,7 @@ function Team() {
               type="text"
               name=""
               id=""
-              placeholder="Buscar miembros"
+              placeholder="Search members"
             />
             <button>
               <img className="w-4" src="search-icon.png" alt="" />

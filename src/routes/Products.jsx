@@ -27,7 +27,7 @@ function Products() {
                 type="text"
                 name=""
                 id=""
-                placeholder="Buscar productos"
+                placeholder="Search products"
               />
               <button>
                 <img className="w-4" src="search-icon.png" alt="" />

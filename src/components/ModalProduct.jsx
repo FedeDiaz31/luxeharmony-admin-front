@@ -29,15 +29,17 @@ function ModalProduct({ handleCloseModalProduct, product }) {
             <Spinner />
           </div>
         ) : (
-          <div className="inline-block bg-bgPrimaryColor rounded-lg shadow-lg transform transition-all fade-in duration-300 modal z-30 mt-5">
+          <div className="inline-block bg-bgPrimaryColor rounded-lg shadow-lg transform transition-all fade-in-fast duration-300 modal z-30 mt-12">
             <button
-              className="absolute right-[-5px] top-[-5px] h-6 w-6 flex border-2 border-bgSecondaryColor bg-bgPrimaryColor hover:bg-bgSecondaryColor rounded-full text-sm translate-all duration-150 "
+              className="absolute right-[-5px] top-[-5px] h-6 w-6 flex border justify-center border-bgSecondaryColor bg-bgPrimaryColor hover:bg-bgSecondaryColor rounded-full text-sm translate-all duration-150 font-bold hover:text-bgPrimaryColor"
               onClick={handleCloseModalProduct}
-            ></button>
+            >
+              X
+            </button>
             {/*             Form Edit Product */}
-            <div className="flex text-white items-center p-5">
+            <div className="flex text-white items-center p-5 px-10">
               {/*                 Images Info of Product */}
-              <div>
+              <div className="hidden laptop:block">
                 <img
                   className="hidden h-[200px] tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
                   src={showImage}
@@ -63,7 +65,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                   </button>
                 </div>
               </div>
-              <div className="flex flex-col mx-10">
+              <div className="flex flex-col ml-10">
                 <h2 className="font-bold text-lg">Edit Product</h2>
                 <div className="min-h-[320px]">
                   {showMoreInfo ? (
@@ -84,8 +86,8 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                   <button
                     className={
                       showMoreInfo
-                        ? "bg-bgForthColor text-textSecondary px-2 rounded-lg  transition-all duration-200"
-                        : "bg-bgSecondaryColor text-textPrimary px-2 rounded-lg  transition-all duration-200"
+                        ? "bg-bgForthColor text-textSecondary px-8 rounded  transition-all duration-200"
+                        : "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
                     }
                     onClick={() => setShowMoreInfo(false)}
                   >
@@ -94,8 +96,8 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                   <button
                     className={
                       showMoreInfo
-                        ? "bg-bgSecondaryColor text-textPrimary px-2 rounded-lg transition-all duration-200"
-                        : "bg-bgForthColor text-textSecondary px-2 rounded-lg  transition-all duration-200"
+                        ? "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                        : "bg-bgForthColor text-textSecondary px-8 rounded transition-all duration-200"
                     }
                     onClick={() => setShowMoreInfo(true)}
                   >
