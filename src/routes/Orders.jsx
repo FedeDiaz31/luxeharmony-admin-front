@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Spinner from "../components/partials/Spinner";
 
 function Orders() {
-  document.title = ` Orders `;
+  document.title = ` LuxeHarmony | Orders `;
   const [orders, setOrders] = useState(null);
   const user = useSelector((state) => state.user);
 

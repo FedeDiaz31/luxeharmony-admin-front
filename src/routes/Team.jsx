@@ -6,7 +6,7 @@ import Spinner from "../components/partials/Spinner";
 import TeamTableBody from "../components/partials/TeamTableBody";
 
 function Team() {
-  document.title = ` Teams `;
+  document.title = ` LuxeHarmony | Teams `;
 
   const [team, setTeam] = useState(null);
   const user = useSelector((state) => state.user);

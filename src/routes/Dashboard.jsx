@@ -9,7 +9,7 @@ import Spinner from "../components/partials/Spinner";
 function Dashboard() {
   const [orders, setOrders] = useState(null);
   const user = useSelector((state) => state.user);
-  document.title = ` Dashborad `;
+  document.title = ` LuxeHarmony | Dashborad `;
 
   useEffect(() => {
     const getOrders = async () => {

@@ -6,7 +6,7 @@ import "../animation/Animations.css";
 import ModalAddProduct from "../components/modals/ModalAddProduct";
 
 function Products() {
-  document.title = ` Products `;
+  document.title = ` LuxeHarmony | Products `;
 
   const [products, setProducts] = useState(null);
   const [showModal, setShowModal] = useState(false);

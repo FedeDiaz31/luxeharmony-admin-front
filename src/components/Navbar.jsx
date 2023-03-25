@@ -12,9 +12,14 @@ function Navbar() {
         className=" tablet:hidden fixed z-50 bg-bgSecondaryColor w-[100px] h-[60px] grid place-content-center"
       >
         <button className="text-white hover:bg-textSecondary space-y-1.5 cursor-pointer transition-color duration-200 p-2 ">
+          <img
+            className="w-20 transition-all duration-200"
+            src="LOGO-WHITE-LUXE-HARMONY.png"
+            alt=""
+          />
+          {/*  <div className="w-6 h-0.5 bg-bgPrimaryColor rounded-full"></div>
           <div className="w-6 h-0.5 bg-bgPrimaryColor rounded-full"></div>
-          <div className="w-6 h-0.5 bg-bgPrimaryColor rounded-full"></div>
-          <div className="w-6 h-0.5 bg-bgPrimaryColor rounded-full"></div>
+          <div className="w-6 h-0.5 bg-bgPrimaryColor rounded-full"></div> */}
         </button>
       </div>
       <div
@@ -37,10 +42,10 @@ function Navbar() {
             <img
               className={
                 hover
-                  ? "w-24 transition-all duration-200"
-                  : "w-16 transition-all duration-200"
+                  ? "w-36 transition-all duration-200"
+                  : "w-20 transition-all duration-200"
               }
-              src="https://i.pinimg.com/originals/13/68/9a/13689aac1d3b32cd988a2ce1d852285e.jpg"
+              src="LOGO-WHITE-LUXE-HARMONY.png"
               alt=""
             />
           </div>

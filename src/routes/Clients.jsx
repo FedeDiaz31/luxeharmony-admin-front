@@ -5,7 +5,7 @@ import ClientsTableBody from "../components/partials/ClientsTableBody";
 import { useSelector } from "react-redux";
 
 function Users() {
-  document.title = ` Clients `;
+  document.title = ` LuxeHarmony | Clients `;
   const [clients, setClients] = useState(null);
   const user = useSelector((state) => state.user);
 
