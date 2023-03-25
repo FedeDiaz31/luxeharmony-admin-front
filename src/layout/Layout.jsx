@@ -6,7 +6,7 @@ function Layout() {
   return (
     <div>
       <div className="flex">
-        <div className="hidden tablet:block z-40">
+        <div className="z-40">
           <Navbar />
         </div>
         <div className="w-full">

@@ -78,7 +78,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
           </div>
         ) : (
           // BODY MODAL
-          <div className="inline-block bg-bgPrimaryColor rounded-lg shadow-lg transform transition-all fade-in-fast duration-300 modal z-30 mt-12">
+          <div className="inline-block bg-bgPrimaryColor rounded-lg shadow-lg transform transition-all fade-in-fast duration-300 z-30 mt-16 laptop:mt-12">
             {/*              BUTTON CLOSE */}
             <button
               className="absolute right-[-5px] top-[-5px] h-6 w-6 flex border justify-center border-bgSecondaryColor bg-bgPrimaryColor hover:bg-bgSecondaryColor rounded-full text-sm translate-all duration-150 font-bold hover:text-bgPrimaryColor"
@@ -89,7 +89,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
             {/*             EDIT PRODUCT */}
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="flex text-white items-center p-5 px-10"
+              className="flex text-white items-center p-3 laptop:p-5 px-5 tablet:px-10"
             >
               {/*          IMAGES SELECTOR AND ADDED FOR PRODUCTS */}
               <div className="hidden laptop:block">
@@ -123,11 +123,11 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                 <h2 className="font-bold text-lg">Edit Product</h2>
                 <div className="min-h-[250px]">
                   {showMoreInfo ? (
-                    <div className="w-full fade-in">
+                    <div className="fade-in w-60 tablet:w-80">
                       {/*              PAGE 1 of EDIT PRODUCT */}
                       <div className="flex flex-col gap-3">
                         {/*               Modify Description*/}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <label
                             htmlFor="brand"
                             className="self-start font-semibold"
@@ -146,7 +146,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                           </div>
                         </div>
                         {/*               Modify Slug */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <label
                             htmlFor="brand"
                             className="self-start font-semibold"
@@ -156,7 +156,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                           <div className="bg-bgForthColor px-2 py-1 rounded flex items-center">
                             <input
                               onChange={(e) => setSlug(e.target.value)}
-                              className="rounded bg-bgForthColor w-72 mr-2 py-1 px-1"
+                              className="rounded bg-bgForthColor w-full mr-2 py-1 px-1"
                               type="text"
                               name="slug"
                               id="slug"
@@ -166,7 +166,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                         </div>
                         <div className="flex gap-3 justify-between">
                           {/*               Modify Price*/}
-                          <div className="flex flex-col">
+                          <div className="flex flex-col w-full">
                             <label
                               htmlFor="brand"
                               className="self-start font-semibold"
@@ -176,7 +176,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                             <div className="bg-bgForthColor px-2 py-1 rounded w-38">
                               <input
                                 onChange={(e) => setPrice(e.target.value)}
-                                className="rounded bg-bgForthColor mr-2 py-1 px-1 w-28"
+                                className="rounded bg-bgForthColor mr-2 py-1 px-1 w-full"
                                 type="number"
                                 name="price"
                                 id="price"
@@ -195,7 +195,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                             <div className="bg-bgForthColor px-2 py-1 rounded w-38">
                               <input
                                 onChange={(e) => setStock(e.target.value)}
-                                className="rounded bg-bgForthColor mr-2 py-1 px-1 w-28"
+                                className="rounded bg-bgForthColor mr-2 py-1 px-1 w-full"
                                 type="number"
                                 name="stock"
                                 id="stock"
@@ -207,21 +207,21 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                       </div>
                     </div>
                   ) : (
-                    <div className="slide-top">
+                    <div className="slide-top w-60 tablet:w-80">
                       {/*              PAGE 2 of EDIT PRODUCT */}
                       <div className="flex flex-col gap-1">
                         {/*               Modify Brand */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <label
                             htmlFor="brand"
                             className="self-start font-semibold"
                           >
                             Brand
                           </label>
-                          <div className="bg-bgForthColor px-2 py-1 rounded flex items-center">
+                          <div className="bg-bgForthColor rounded w-full flex items-center">
                             <select
                               onChange={(e) => setBrandName(e.target.value)}
-                              className="rounded bg-bgForthColor w-72 mr-2 py-1 px-1"
+                              className="rounded bg-bgForthColor w-full mr-2 py-1 px-1"
                               type="text"
                               name="brand"
                               id="brand"
@@ -243,17 +243,17 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                           </div>
                         </div>
                         {/*               Modify Model */}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <label
                             htmlFor="brand"
                             className="self-start font-semibold"
                           >
                             Model
                           </label>
-                          <div className="bg-bgForthColor px-2 py-1 rounded flex items-center">
+                          <div className="bg-bgForthColor rounded flex items-center">
                             <input
                               onChange={(e) => setModel(e.target.value)}
-                              className="rounded bg-bgForthColor w-72 mr-2 py-1 px-1"
+                              className="rounded bg-bgForthColor w-full mr-2 py-1 px-1"
                               type="text"
                               name=""
                               id=""
@@ -262,17 +262,17 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                           </div>
                         </div>
                         {/*               Modify Subtitle*/}
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <label
                             htmlFor="brand"
                             className="self-start font-semibold"
                           >
                             Subtitle
                           </label>
-                          <div className="bg-bgForthColor px-2 py-1 rounded flex items-center">
+                          <div className="bg-bgForthColor rounded flex items-center">
                             <textarea
                               onChange={(e) => setSubtitle(e.target.value)}
-                              className="rounded bg-bgForthColor w-72 mr-2 py-1 px-2"
+                              className="rounded bg-bgForthColor w-full mr-2 py-1 px-2"
                               type="text"
                               name=""
                               id=""

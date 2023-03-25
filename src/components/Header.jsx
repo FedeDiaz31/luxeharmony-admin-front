@@ -10,7 +10,7 @@ function Header() {
     <>
       <UserInfoMenu showInfo={showInfo} setShowInfo={setShowInfo} />
       <div className="relative h-[60px] w-screen items-center flex bg-bgPrimaryColor shadow z-30">
-        <div className=" pl-[130px] flex justify-end items-center w-full pr-10">
+        <div className="tablet:pl-[130px] flex justify-end items-center w-full pr-5  tablet:pr-10">
           <button
             onClick={() => setShowInfo(!showInfo)}
             className="flex gap-3 items-center border hover:bg-bgSecondaryColor hover:text-textPrimary rounded-full px-3 py-1 transition-all duration-200"

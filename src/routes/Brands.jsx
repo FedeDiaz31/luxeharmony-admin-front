@@ -7,6 +7,7 @@ import "../animation/Animations.css";
 import ModalAddProduct from "../components/modals/ModalAddProduct";
 
 function Brands() {
+  document.title = ` Brands `;
   const [brands, setBrands] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const handleCloseModalProduct = () => setShowModal(false);

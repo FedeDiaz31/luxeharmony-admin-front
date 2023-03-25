@@ -6,6 +6,8 @@ import Spinner from "../components/partials/Spinner";
 import TeamTableBody from "../components/partials/TeamTableBody";
 
 function Team() {
+  document.title = ` Teams `;
+
   const [team, setTeam] = useState(null);
   const user = useSelector((state) => state.user);
 

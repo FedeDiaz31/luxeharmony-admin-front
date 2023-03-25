@@ -10,6 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  document.title = ` Login `;
 
   const handleLogin = async (e) => {
     e.preventDefault();

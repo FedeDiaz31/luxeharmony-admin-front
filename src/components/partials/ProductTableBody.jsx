@@ -28,7 +28,7 @@ function ProductTableBody({ product }) {
           <h3 className="font-semibold">{product.brand.name}</h3>
         </div>
         <div className="w-full">
-          <h3 className="font-semibold">{product.model}</h3>
+          <h3 className="font-semibold hidden tablet:block">{product.model}</h3>
         </div>
         <div className="w-full text-end">
           <h3 className="text-textTertiary text-sm">USD {product.price}</h3>
