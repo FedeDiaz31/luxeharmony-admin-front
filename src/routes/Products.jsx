@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
+import Slider from "react-slick";
 import ProductTableBody from "../components/partials/ProductTableBody";
 import "../animation/Animations.css";
 import ModalAddProduct from "../components/modals/ModalAddProduct";
@@ -8,8 +9,13 @@ import ModalAddProduct from "../components/modals/ModalAddProduct";
 function Products() {
   document.title = ` LuxeHarmony | Products `;
 
+  const [filterSelected, setFilterSelected] = useState("categories");
   const [products, setProducts] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [categories, setCategories] = useState(null);
+  const [brands, setBrands] = useState(null);
+  const [categoryFilter, setCategoryFilter] = useState(null);
+  const [brandFilter, setBrandFilter] = useState(null);
   const handleCloseModalProduct = () => setShowModal(false);
   const handleShowModalProduct = () => setShowModal(true);
 
@@ -20,6 +26,58 @@ function Products() {
     };
     getProducts();
   }, []);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const response = await axios.get("http://localhost:8000/categories");
+      setCategories(response.data);
+    };
+    getCategories();
+  }, []);
+
+  useEffect(() => {
+    const getBrands = async () => {
+      const response = await axios.get("http://localhost:8000/brands");
+      setBrands(response.data);
+    };
+    getBrands();
+  }, []);
+
+  /*   Config Slider de Generos */
+  const settings = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 7,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <>
@@ -51,6 +109,101 @@ function Products() {
             </button>
           </div>
         </div>
+
+        <div className="text-white font-semibold flex gap-2 ml-8 mt-5">
+          <button
+            onClick={() => setFilterSelected("categories")}
+            className={`${
+              filterSelected === "categories" &&
+              "bg-bgSecondaryColor text-textPrimary rounded"
+            } && border-b-2 pb-1  px-4  m-0 transition-all duration-200`}
+          >
+            Categories
+          </button>
+          <button
+            onClick={() => setFilterSelected("brands")}
+            className={`${
+              filterSelected === "brands" &&
+              "bg-bgSecondaryColor text-textPrimary rounded"
+            } && border-b-2 pb-1 hover:bg-gray-700 px-4 m-0 transition-all duration-200`}
+          >
+            Brands
+          </button>
+          {/*         Borrar filtro */}
+          {categoryFilter || brandFilter ? (
+            <div className="flex">
+              <h2 className="mx-3">⦾</h2>
+              <button
+                onClick={() => {
+                  setCategoryFilter(null);
+                  setBrandFilter(null);
+                }}
+                className={`ml-2 hidden tablet:flex border-b-2 pb-1 border-gray-800 hover:bg-gray-700 px-4 transition-all duration-200`}
+              >
+                Borrar filtro
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+
+        {/*        Filtro Categorias */}
+        {filterSelected === "categories" && (
+          <div className="px-14 z-[0] relative my-5 fade-in">
+            {!categories ? (
+              <div className="flex justify-center">
+                <Spinner />
+              </div>
+            ) : (
+              <div className="flex justify-center gap-4">
+                {categories.map((category) => {
+                  return (
+                    <div
+                      onClick={() => setCategoryFilter(category._id)}
+                      key={category.id}
+                      className={`${
+                        category._id === categoryFilter &&
+                        "bg-bgSecondaryColor text-textPrimary rounded"
+                      } border-b-2 text-lg font-semibold hover:bg-gray-700 px-3 hover:z-0 cursor-pointer text-center transition-all duration-200`}
+                    >
+                      {category.name}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/*        Filtro Marcas */}
+        {filterSelected === "brands" && (
+          <div className="px-14 z-[0] relative my-5 fade-in">
+            {!brands ? (
+              <div className="flex justify-center">
+                <Spinner />
+              </div>
+            ) : (
+              <div className="flex justify-center gap-4">
+                {brands.map((brand) => {
+                  return (
+                    <div
+                      onClick={() => setBrandFilter(brand._id)}
+                      key={brand.id}
+                      className={`${
+                        brand._id === brandFilter &&
+                        "bg-bgSecondaryColor text-textPrimary  rounded"
+                      } border-b-2 cursor-pointer text-center text-lg px-3 font-semibold transition-all duration-200`}
+                    >
+                      {brand.name}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="flex font-semibold text-lg px-5 mt-5">
           <div className="w-8/12"></div>
           <div className="w-full">Brand</div>

@@ -25,33 +25,41 @@ function Login() {
 
   return (
     <div className="w-screen h-screen grid place-content-center bg-bgPrimaryColor">
-      <form
-        onSubmit={handleLogin}
-        className="flex flex-col bg-bgSecondaryColor p-10 gap-3 rounded"
-      >
-        <h3 className="text-bgTertiaryColor font-bold">Login Admin</h3>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          placeholder="email"
-          className="px-3 py-2 rounded"
-          type="text"
-          name=""
-          id=""
-        />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="password"
-          className="px-3 py-2 rounded"
-          type="password"
-          name=""
-          id=""
-        />
-        <button className="border-2 text-textPrimary font-bold border-bgPrimaryColor rounded py-1">
-          Login
-        </button>
-      </form>
+      <div className="bg-bgSecondaryColor p-10 rounded">
+        <div className="flex justify-center mb-5">
+          <img
+            className="w-32 transition-all duration-200"
+            src="LOGO-WHITE-LUXE-HARMONY.png"
+            alt=""
+          />
+        </div>
+        <h3 className="text-bgTertiaryColor text-sm font-semibold mb-1">
+          Login Admin
+        </h3>
+        <form onSubmit={handleLogin} className="flex flex-col gap-3 ">
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            placeholder="email"
+            className="px-3 py-2 rounded"
+            type="text"
+            name=""
+            id=""
+          />
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="password"
+            className="px-3 py-2 rounded"
+            type="password"
+            name=""
+            id=""
+          />
+          <button className="border-2 text-textPrimary font-bold border-bgPrimaryColor rounded py-1">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

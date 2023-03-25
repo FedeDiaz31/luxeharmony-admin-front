@@ -94,7 +94,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
               {/*          IMAGES SELECTOR AND ADDED FOR PRODUCTS */}
               <div className="hidden laptop:block">
                 <img
-                  className="hidden h-[200px] mix-blend-multiply tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
+                  className="hidden h-[290px] mix-blend-multiply tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
                   src={showImage}
                   alt=""
                 />
@@ -279,6 +279,25 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                               value={subtitle}
                             />
                           </div>
+                        </div>
+                        <div className=" laptop:hidden flex justify-center gap-2 items-center mt-2">
+                          {product.image.map((image, i) => {
+                            return !image ? (
+                              <div className="flex justify-center">
+                                <Spinner />
+                              </div>
+                            ) : (
+                              <img
+                                key={i}
+                                onClick={() => setShowImage(image)}
+                                className="w-10 tablet:w-14 mix-blend-multiply h-10 tablet:h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
+                                src={image}
+                              />
+                            );
+                          })}
+                          <button className="ml-2 bg-bgForthColor text-bgSecondaryColor px-3 h-8 rounded text-lg font-semibold">
+                            +
+                          </button>
                         </div>
                       </div>
                     </div>

@@ -14,7 +14,7 @@ function Navbar() {
         <button className="text-white hover:bg-textSecondary space-y-1.5 cursor-pointer transition-color duration-200 p-2 ">
           <img
             className="w-20 transition-all duration-200"
-            src="LOGO-WHITE-LUXE-HARMONY.png"
+            src="LOGO-WHITE-LUXE-HARMONY2.png"
             alt=""
           />
           {/*  <div className="w-6 h-0.5 bg-bgPrimaryColor rounded-full"></div>
@@ -45,7 +45,7 @@ function Navbar() {
                   ? "w-36 transition-all duration-200"
                   : "w-20 transition-all duration-200"
               }
-              src="LOGO-WHITE-LUXE-HARMONY.png"
+              src="LOGO-WHITE-LUXE-HARMONY2.png"
               alt=""
             />
           </div>
