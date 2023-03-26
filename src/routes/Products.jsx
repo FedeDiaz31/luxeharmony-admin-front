@@ -132,16 +132,22 @@ function Products() {
           {/*         Borrar filtro */}
           {categoryFilter || brandFilter ? (
             <div className="flex">
-              <h2 className="mx-3">⦾</h2>
-              <button
-                onClick={() => {
-                  setCategoryFilter(null);
-                  setBrandFilter(null);
-                }}
-                className={`ml-2 hidden tablet:flex border-b-2 pb-1 border-gray-800 hover:bg-gray-700 px-4 transition-all duration-200`}
-              >
-                Borrar filtro
-              </button>
+              <div className="flex">
+                <h2 className="mx-3">⦾</h2>
+                <button
+                  onClick={() => {
+                    setCategoryFilter(null);
+                    setBrandFilter(null);
+                  }}
+                  className={`ml-2 hidden tablet:flex border-b-2 pb-1 border-gray-800 hover:bg-gray-700 px-4 transition-all duration-200`}
+                >
+                  Borrar filtro
+                </button>
+              </div>
+              <h3 className="ml-3 bg-bgSecondaryColor text-textPrimary rounded px-2">
+                [ {categoryFilter} {categoryFilter && brandFilter && "&"}{" "}
+                {brandFilter} ]
+              </h3>
             </div>
           ) : (
             ""
@@ -160,10 +166,10 @@ function Products() {
                 {categories.map((category) => {
                   return (
                     <div
-                      onClick={() => setCategoryFilter(category._id)}
+                      onClick={() => setCategoryFilter(category.name)}
                       key={category.id}
                       className={`${
-                        category._id === categoryFilter &&
+                        category.name === categoryFilter &&
                         "bg-bgSecondaryColor text-textPrimary rounded"
                       } border-b-2 text-lg font-semibold hover:bg-gray-700 px-3 hover:z-0 cursor-pointer text-center transition-all duration-200`}
                     >
@@ -184,18 +190,22 @@ function Products() {
                 <Spinner />
               </div>
             ) : (
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center items-baseline gap-4">
                 {brands.map((brand) => {
                   return (
                     <div
-                      onClick={() => setBrandFilter(brand._id)}
+                      onClick={() => setBrandFilter(brand.name)}
                       key={brand.id}
                       className={`${
-                        brand._id === brandFilter &&
+                        brand.name === brandFilter &&
                         "bg-bgSecondaryColor text-textPrimary  rounded"
-                      } border-b-2 cursor-pointer text-center text-lg px-3 font-semibold transition-all duration-200`}
+                      } cursor-pointer text-center text-lg px-3 font-semibold transition-all duration-200`}
                     >
-                      {brand.name}
+                      <img
+                        className="w-10 my-1 object-contain"
+                        src={`${brand.logo}`}
+                        alt=""
+                      />
                     </div>
                   );
                 })}
