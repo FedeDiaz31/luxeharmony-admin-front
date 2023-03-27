@@ -9,7 +9,7 @@ import ModalAddProduct from "../components/modals/ModalAddProduct";
 function Products() {
   document.title = ` LuxeHarmony | Products `;
 
-  const [filterSelected, setFilterSelected] = useState("categories");
+  const [filterSelected, setFilterSelected] = useState("brands");
   const [products, setProducts] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [categories, setCategories] = useState(null);
@@ -43,41 +43,7 @@ function Products() {
     getBrands();
   }, []);
 
-  /*   Config Slider de Generos */
-  const settings = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  console.log(brands);
 
   return (
     <>
@@ -112,15 +78,6 @@ function Products() {
 
         <div className="text-white font-semibold flex gap-2 ml-8 mt-5">
           <button
-            onClick={() => setFilterSelected("categories")}
-            className={`${
-              filterSelected === "categories" &&
-              "bg-bgSecondaryColor text-textPrimary rounded"
-            } && border-b-2 pb-1  px-4  m-0 transition-all duration-200`}
-          >
-            Categories
-          </button>
-          <button
             onClick={() => setFilterSelected("brands")}
             className={`${
               filterSelected === "brands" &&
@@ -129,6 +86,16 @@ function Products() {
           >
             Brands
           </button>
+          <button
+            onClick={() => setFilterSelected("categories")}
+            className={`${
+              filterSelected === "categories" &&
+              "bg-bgSecondaryColor text-textPrimary rounded"
+            } && border-b-2 pb-1  px-4  m-0 transition-all duration-200`}
+          >
+            Categories
+          </button>
+
           {/*         Borrar filtro */}
           {categoryFilter || brandFilter ? (
             <div className="flex">
@@ -156,18 +123,18 @@ function Products() {
 
         {/*        Filtro Categorias */}
         {filterSelected === "categories" && (
-          <div className="px-14 z-[0] relative my-5 fade-in">
+          <div className="px-14 z-[0] relative my-5 fade-in grid">
             {!categories ? (
               <div className="flex justify-center">
                 <Spinner />
               </div>
             ) : (
-              <div className="flex justify-center gap-4">
+              <div className="grid grid-cols-2 laptop:grid-cols-4 gap-3 m-auto">
                 {categories.map((category) => {
                   return (
                     <div
                       onClick={() => setCategoryFilter(category.name)}
-                      key={category.id}
+                      key={category._id}
                       className={`${
                         category.name === categoryFilter &&
                         "bg-bgSecondaryColor text-textPrimary rounded"
@@ -184,7 +151,7 @@ function Products() {
 
         {/*        Filtro Marcas */}
         {filterSelected === "brands" && (
-          <div className="px-14 z-[0] relative my-5 fade-in">
+          <div className="px-14 z-[0] relative my-8 fade-in">
             {!brands ? (
               <div className="flex justify-center">
                 <Spinner />
@@ -195,17 +162,33 @@ function Products() {
                   return (
                     <div
                       onClick={() => setBrandFilter(brand.name)}
-                      key={brand.id}
+                      key={brand._id}
                       className={`${
                         brand.name === brandFilter &&
-                        "bg-bgSecondaryColor text-textPrimary  rounded"
+                        "bg-bgSecondaryColor text-textPrimary rounded"
                       } cursor-pointer text-center text-lg px-3 font-semibold transition-all duration-200`}
                     >
-                      <img
-                        className="w-10 my-1 object-contain"
-                        src={`${brand.logo}`}
-                        alt=""
-                      />
+                      {brand.name === brandFilter ? (
+                        <img
+                          className="w-24 my-1 object-contain"
+                          src={
+                            brand.logo.includes("http")
+                              ? brand.logo
+                              : `${process.env.REACT_APP_API_URL}/img/${brand.logo}`
+                          }
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          className="w-24 my-1 object-contain"
+                          src={
+                            brand.logo2.includes("http")
+                              ? brand.logo2
+                              : `${process.env.REACT_APP_API_URL}/img/${brand.logo2}`
+                          }
+                          alt=""
+                        />
+                      )}
                     </div>
                   );
                 })}
