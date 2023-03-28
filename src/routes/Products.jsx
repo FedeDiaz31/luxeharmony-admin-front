@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useParams } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import Slider from "react-slick";
@@ -52,6 +52,35 @@ function Products() {
   const handleSearch = (value) => {
     setInpuValue(value);
   };
+
+  ////////////////////
+  useEffect(() => {
+    const getProducts = async () => {
+      const brand = brandFilter;
+      const response = await axios({
+        url: `${process.env.REACT_APP_API_URL}/products`,
+        data: { brand },
+        method: "post",
+      });
+      setProducts(response.data);
+    };
+    getProducts();
+  }, [brandFilter]);
+  /////////////////////
+  useEffect(() => {
+    const getProducts = async () => {
+      const category = categoryFilter;
+      const response = await axios({
+        url: `${process.env.REACT_APP_API_URL}/products`,
+        data: { category },
+        method: "post",
+      });
+      setProducts(response.data);
+    };
+    getProducts();
+  }, [categoryFilter]);
+
+  console.log(categoryFilter);
 
   return (
     <>
@@ -114,6 +143,7 @@ function Products() {
                   onClick={() => {
                     setCategoryFilter(null);
                     setBrandFilter(null);
+                    setInpuValue(inputValue);
                   }}
                   className={`ml-2 hidden tablet:flex border-b-2 pb-1 border-gray-800 hover:bg-gray-700 px-4 transition-all duration-200`}
                 >
