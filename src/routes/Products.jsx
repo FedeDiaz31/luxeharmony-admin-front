@@ -18,14 +18,20 @@ function Products() {
   const [brandFilter, setBrandFilter] = useState(null);
   const handleCloseModalProduct = () => setShowModal(false);
   const handleShowModalProduct = () => setShowModal(true);
+  const [inputValue, setInpuValue] = useState("");
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await axios.get("http://localhost:8000/products");
+      const searchValue = inputValue;
+      const response = await axios({
+        url: `${process.env.REACT_APP_API_URL}/products/search`,
+        data: { searchValue },
+        method: "post",
+      });
       setProducts(response.data);
     };
     getProducts();
-  }, []);
+  }, [inputValue]);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -43,7 +49,9 @@ function Products() {
     getBrands();
   }, []);
 
-  console.log(brands);
+  const handleSearch = (value) => {
+    setInpuValue(value);
+  };
 
   return (
     <>
@@ -59,9 +67,10 @@ function Products() {
               <input
                 className="rounded w-30 mobilXS:w-52 laptop:w-72 tablet:mr-2 py-1 px-1"
                 type="text"
-                name=""
-                id=""
+                name="searcher"
+                id="searcher"
                 placeholder="Search products"
+                onChange={(event) => handleSearch(event.target.value)}
               />
               <button>
                 <img className="w-4" src="search-icon.png" alt="" />
