@@ -67,6 +67,13 @@ function Navbar() {
             <ButtonNavbar
               setHover={setHover}
               hover={hover}
+              text={"Brands"}
+              link={"/brands"}
+              image={"brand-icon.png"}
+            />
+            <ButtonNavbar
+              setHover={setHover}
+              hover={hover}
               text={"Clients"}
               link={"/clients"}
               image={"users-icon.png"}
@@ -78,6 +85,7 @@ function Navbar() {
               link={"/orders"}
               image={"orders-icon.png"}
             />
+
             <ButtonNavbar
               setHover={setHover}
               hover={hover}
