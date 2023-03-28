@@ -47,13 +47,13 @@ function Orders() {
             </button>
           </div>
         </div>
-        <div className="flex font-semibold text-lg px-5 mt-5">
+        {/* <div className="flex font-semibold text-lg px-5 mt-5">
           <h3 className="w-full">Full name</h3>
-          <h3 className="w-full text-end hidden laptop:block">Products</h3>
           <h3 className="w-full text-end">Total</h3>
           <h3 className="w-full text-end hidden laptop:block">Emited</h3>
+          <h3 className="w-full text-center laptop:block">Status</h3>
           <h3 className="w-full"></h3>
-        </div>
+        </div> */}
         {orders ? (
           <ul className="mt-3 grid gap-1 rounded-lg pb-4">
             {orders.map((order, i) => {

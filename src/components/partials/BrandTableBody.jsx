@@ -5,7 +5,7 @@ function BrandTableBody({ brand }) {
   const [showModal, setShowModal] = useState(false);
   const handleCloseModalBrand = () => setShowModal(false);
   const handleShowModalBrand = () => setShowModal(true);
-  console.log(showModal);
+
   return (
     <>
       <div className="z-20">

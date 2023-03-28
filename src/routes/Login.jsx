@@ -47,8 +47,8 @@ function Login() {
             id=""
           />
           <input
-            value={password}
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
             placeholder="password"
             className="px-3 py-2 rounded"
             type="password"

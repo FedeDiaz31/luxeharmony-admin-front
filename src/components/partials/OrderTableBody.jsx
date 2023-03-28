@@ -11,9 +11,6 @@ function ClientTableBody({ order }) {
       <div className="w-full text-end">
         <h3 className="text-textTertiary hidden laptop:block">{order.email}</h3>
       </div>
-      <div className="w-full">
-        <h3 className="text-textTertiary">{order.products.length}</h3>
-      </div>
       <div className="w-full text-center">
         <h3 className="text-textTertiary">U$D {order.totalPrice}</h3>
       </div>
@@ -21,6 +18,9 @@ function ClientTableBody({ order }) {
         <h3 className="text-textTertiary">
           {format(new Date(order.createdAt), "dd'/'M'/'yy")}
         </h3>
+      </div>
+      <div className="w-full text-center">
+        <h3 className="text-textTertiary">{order.status.name}</h3>
       </div>
       <div className="w-full text-end">
         <button className=" hover:bg-bgPrimaryColor text-textPrimary px-3 py-1 rounded-b-md transition-all duration-200 font-bold">

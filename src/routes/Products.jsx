@@ -80,8 +80,6 @@ function Products() {
     getProducts();
   }, [categoryFilter]);
 
-  console.log(categoryFilter);
-
   return (
     <>
       {showModal && (

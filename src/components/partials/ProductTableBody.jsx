@@ -22,7 +22,14 @@ function ProductTableBody({ product }) {
         className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded-lg  hover:scale-[101%] bg-bgPrimaryColor  shadow transition-all duration-200"
       >
         <div className="w-8/12">
-          <img className="w-6 rotate-12 z-0" src={product.image[0]} />
+          <img
+            className="w-6 rotate-12 z-0"
+            src={
+              product.image[0].includes("http")
+                ? product.image[0]
+                : `${process.env.REACT_APP_API_URL}/img/products/${product.image[0]}`
+            }
+          />
         </div>
         <div className="w-full">
           <h3 className="font-semibold">{product.brand.name}</h3>
