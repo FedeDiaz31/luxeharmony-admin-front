@@ -24,14 +24,14 @@ function BrandTableBody({ brand }) {
       >
         <div className="w-8/12">
           <img
-            className="w-6 z-0"
+            className="w-12 z-0"
             src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
           />
         </div>
-        <div className="w-full">
+        <div className="w-full text-center">
           <h3 className="font-semibold">{brand.name}</h3>
         </div>
-        <div className="w-full">
+        <div className="w-full text-center">
           <h3 className="font-semibold">{brand.products.length}</h3>
         </div>
 

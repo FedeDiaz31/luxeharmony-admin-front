@@ -52,8 +52,8 @@ function Brands() {
         </div>
         <div className="flex font-semibold text-lg px-5 mt-5">
           <div className="w-8/12">Logo</div>
-          <div className="w-full">Brand</div>
-          <div className="w-full">Products</div>
+          <div className="w-full text-center">Name</div>
+          <div className="w-full text-center">Products</div>
           <div className="w-full"></div>
         </div>
         {brands ? (

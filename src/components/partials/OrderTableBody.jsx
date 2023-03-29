@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-function ClientTableBody({ order }) {
+function OrderTableBody({ order }) {
   return (
     <li className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200">
       <div className="w-full">
@@ -31,4 +31,4 @@ function ClientTableBody({ order }) {
   );
 }
 
-export default ClientTableBody;
+export default OrderTableBody;
