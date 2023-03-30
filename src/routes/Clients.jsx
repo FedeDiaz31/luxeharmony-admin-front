@@ -9,19 +9,22 @@ function Users() {
   const [clients, setClients] = useState(null);
   const user = useSelector((state) => state.user);
 
+  const [searchValue, setSearchValue] = useState("");
+
   useEffect(() => {
     const getUsers = async () => {
       const response = await axios({
         headers: {
           Authorization: `Bearer ${user.admin.token}`,
         },
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}/users`,
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}/users/search`,
+        data: { searchValue },
       });
       setClients(response.data);
     };
     getUsers();
-  }, []);
+  }, [searchValue]);
 
   return (
     <div className="p-5  fade-in">
@@ -35,6 +38,8 @@ function Users() {
               name=""
               id=""
               placeholder="Search clients"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
             />
             <button>
               <img className="w-4" src="search-icon.png" alt="" />
