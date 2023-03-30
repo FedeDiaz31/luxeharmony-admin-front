@@ -5,21 +5,40 @@ import ProductTableBody from "../components/partials/ProductTableBody";
 import BrandTableBody from "../components/partials/BrandTableBody";
 import "../animation/Animations.css";
 import ModalAddProduct from "../components/modals/ModalAddProduct";
+import { useSelector } from "react-redux";
 
 function Brands() {
   document.title = ` LuxeHarmony | Brands `;
+  const [searchBrand, setSearchBrand] = useState("");
   const [brands, setBrands] = useState(null);
+
   const [showModal, setShowModal] = useState(false);
   const handleCloseModalProduct = () => setShowModal(false);
   const handleShowModalProduct = () => setShowModal(true);
+  const user = useSelector((state) => state.user);
+
+  // useEffect(() => {
+  //   const getBrands = async () => {
+  //     const response = await axios.get("http://localhost:8000/brands");
+  //     setBrands(response.data);
+  //   };
+  //   getBrands();
+  // }, []);
 
   useEffect(() => {
     const getBrands = async () => {
-      const response = await axios.get("http://localhost:8000/brands");
+      const response = await axios({
+        headers: {
+          Authorization: `Bearer ${user.admin.token}`,
+        },
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}/brands/search`,
+        data: { searchBrand },
+      });
       setBrands(response.data);
     };
     getBrands();
-  }, []);
+  }, [searchBrand]);
 
   return (
     <>
@@ -37,6 +56,8 @@ function Brands() {
                 name=""
                 id=""
                 placeholder="Search brands"
+                value={searchBrand}
+                onChange={(e) => setSearchBrand(e.target.value)}
               />
               <button>
                 <img className="w-4" src="search-icon.png" alt="" />
