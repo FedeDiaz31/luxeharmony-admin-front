@@ -17,14 +17,6 @@ function Brands() {
   const handleShowModalProduct = () => setShowModal(true);
   const user = useSelector((state) => state.user);
 
-  // useEffect(() => {
-  //   const getBrands = async () => {
-  //     const response = await axios.get("http://localhost:8000/brands");
-  //     setBrands(response.data);
-  //   };
-  //   getBrands();
-  // }, []);
-
   useEffect(() => {
     const getBrands = async () => {
       const response = await axios({
