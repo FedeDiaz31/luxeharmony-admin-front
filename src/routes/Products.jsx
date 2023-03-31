@@ -35,7 +35,9 @@ function Products() {
 
   useEffect(() => {
     const getCategories = async () => {
-      const response = await axios.get("http://localhost:8000/categories");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}categories`
+      );
       setCategories(response.data);
     };
     getCategories();
@@ -43,7 +45,9 @@ function Products() {
 
   useEffect(() => {
     const getBrands = async () => {
-      const response = await axios.get("http://localhost:8000/brands");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/brands`
+      );
       setBrands(response.data);
     };
     getBrands();
