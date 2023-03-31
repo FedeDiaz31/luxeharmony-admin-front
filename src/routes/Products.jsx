@@ -36,7 +36,7 @@ function Products() {
   useEffect(() => {
     const getCategories = async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}categories`
+        `${process.env.REACT_APP_API_URL}/categories`
       );
       setCategories(response.data);
     };
