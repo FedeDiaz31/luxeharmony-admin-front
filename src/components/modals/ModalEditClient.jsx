@@ -9,6 +9,7 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
   const [lastname, setLastname] = useState(client.lastname);
   const [email, setEmail] = useState(client.email);
   const [adresses, setAdresses] = useState(client.adresses);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const [showMoreInfo, setShowMoreInfo] = useState(true);
   /*   Close with ESC Function */
@@ -26,6 +27,18 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
       method: "put",
       url: `${process.env.REACT_APP_API_URL}/users/${client._id}`,
       data: { firstname, lastname, email, adresses },
+    });
+    setClients(response.data);
+    handleCloseModalClient();
+  };
+
+  const handleDelete = async () => {
+    const response = await axios({
+      headers: {
+        Authorization: `Bearer ${user.admin.token}`,
+      },
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}/users/${client._id}`,
     });
     setClients(response.data);
     handleCloseModalClient();
@@ -104,9 +117,37 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
                       onChange={(e) => setAdresses(e.target.value)}
                     />
                   </div>
+                  <div className="flex mt-7">
+                    <p className="mr-5">Do you want to delete this client?</p>
+                    <button
+                      onClick={() => setShowDeleteModal(true)}
+                      className="bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200 hover:bg-bgPrimaryColor hover:text-textSecondary"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="mt-3 flex flex-col  items-center">
+
+              {showDeleteModal && (
+                <div className="flex justify-between mt-3 p-2 rounded bg-bgFiftyColor">
+                  <p className="mr-10 text-textSecondary ">Are you sure?</p>
+                  <button
+                    onClick={() => setShowDeleteModal(false)}
+                    className="w-[20vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
+                  >
+                    No, close modal
+                  </button>{" "}
+                  <button
+                    onClick={handleDelete}
+                    className="w-[20vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
+                  >
+                    Yes, Im sure
+                  </button>
+                </div>
+              )}
+
+              <div className="mt-5 flex flex-col  items-center">
                 <button
                   onClick={handleEdit}
                   className=" gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
