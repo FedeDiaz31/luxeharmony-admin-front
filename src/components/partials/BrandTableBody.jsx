@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ModalEditBrand from "../modals/ModalEditBrand";
 
-function BrandTableBody({ brand }) {
+function BrandTableBody({ brand, setBrands }) {
   const [showModal, setShowModal] = useState(false);
   const handleCloseModalBrand = () => setShowModal(false);
   const handleShowModalBrand = () => setShowModal(true);
@@ -14,6 +14,7 @@ function BrandTableBody({ brand }) {
             <ModalEditBrand
               brand={brand}
               handleCloseModalBrand={handleCloseModalBrand}
+              setBrands={setBrands}
             />
           </div>
         )}
