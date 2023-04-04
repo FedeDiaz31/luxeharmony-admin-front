@@ -30,7 +30,7 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
       url: `${process.env.REACT_APP_API_URL}/brands/${brand._id}`,
       data: formData,
     });
-
+    console.log(response.data);
     setBrands(response.data);
     handleCloseModalBrand();
   };
@@ -91,7 +91,7 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
                           id="logo"
                           className="rounded bg-bgForthColor ml-11 mr-2 py-1 px-1"
                           onChange={(e) => {
-                            setLogo(e.target.files[0].name);
+                            setLogo(e.target.files[0]);
                           }}
                           multiple
                         />
