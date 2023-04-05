@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
-import ProductTableBody from "../components/partials/ProductTableBody";
 import BrandTableBody from "../components/partials/BrandTableBody";
 import "../animation/Animations.css";
-import ModalAddProduct from "../components/modals/ModalAddProduct";
+import ModalCreateBrand from "../components/modals/ModalCreateBrand";
 import { useSelector } from "react-redux";
 
 function Brands() {
@@ -13,8 +12,8 @@ function Brands() {
   const [brands, setBrands] = useState(null);
 
   const [showModal, setShowModal] = useState(false);
-  const handleCloseModalProduct = () => setShowModal(false);
-  const handleShowModalProduct = () => setShowModal(true);
+  const handleCloseModalBrand = () => setShowModal(false);
+  const handleShowModalBrand = () => setShowModal(true);
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -35,7 +34,10 @@ function Brands() {
   return (
     <>
       {showModal && (
-        <ModalAddProduct handleCloseModalProduct={handleCloseModalProduct} />
+        <ModalCreateBrand
+          handleCloseModalBrand={handleCloseModalBrand}
+          setBrands={setBrands}
+        />
       )}
       <div className="p-5 fade-in">
         <div className="flex w-full justify-between items-center gap-3 px-10">
@@ -56,7 +58,7 @@ function Brands() {
               </button>
             </div>
             <button
-              onClick={handleShowModalProduct}
+              onClick={handleShowModalBrand}
               className="bg-bgSecondaryColor text-textPrimary px-3 h-8 rounded text-lg font-semibold"
             >
               +
