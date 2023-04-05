@@ -13,8 +13,8 @@ function BrandTableBody({ brand, setBrands }) {
           <div>
             <ModalEditBrand
               brand={brand}
-              handleCloseModalBrand={handleCloseModalBrand}
               setBrands={setBrands}
+              handleCloseModalBrand={handleCloseModalBrand}
             />
           </div>
         )}

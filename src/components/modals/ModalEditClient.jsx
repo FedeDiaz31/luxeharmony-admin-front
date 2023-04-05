@@ -11,7 +11,6 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
   const [adresses, setAdresses] = useState(client.adresses);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const [showMoreInfo, setShowMoreInfo] = useState(true);
   /*   Close with ESC Function */
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
@@ -130,17 +129,17 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
               </div>
 
               {showDeleteModal && (
-                <div className="flex justify-between mt-3 p-2 rounded bg-bgFiftyColor">
+                <div className="flex justify-between mt-3 p-2 rounded bg-bgSoftRedColor">
                   <p className="mr-10 text-textSecondary ">Are you sure?</p>
                   <button
                     onClick={() => setShowDeleteModal(false)}
-                    className="w-[20vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
+                    className="w-[17vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
                   >
                     No, close modal
                   </button>{" "}
                   <button
                     onClick={handleDelete}
-                    className="w-[20vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
+                    className="w-[17vh] ml-2 bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
                   >
                     Yes, Im sure
                   </button>

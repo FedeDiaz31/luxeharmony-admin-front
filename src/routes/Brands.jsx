@@ -30,7 +30,7 @@ function Brands() {
       setBrands(response.data);
     };
     getBrands();
-  }, [searchBrand]);
+  }, [searchBrand, brands]);
 
   return (
     <>

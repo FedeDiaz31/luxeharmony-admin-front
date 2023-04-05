@@ -17,6 +17,7 @@ module.exports = {
       bgFiftyColor: "#D9D7D2",
       bgRedColor: "red",
       bgBlueColor: "#0578FD",
+      bgSoftRedColor: "#FAA7A7",
       textPrimary: "#FEFEFE",
       textSecondary: "black",
       textTertiary: "#717171",
