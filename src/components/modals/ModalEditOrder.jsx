@@ -93,7 +93,7 @@ function ModalEditOrder({ handleCloseModalOrder, order }) {
               <div className="mt-5 flex flex-col  items-center">
                 <button
                   onClick={handleEdit}
-                  className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                  className="mt-4 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
                 >
                   <img className="w-8" src="edit-icon.png" alt="" />
                   <h2 className="font-bold">Edit</h2>

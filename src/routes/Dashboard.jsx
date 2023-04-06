@@ -12,7 +12,7 @@ function Dashboard() {
   const orders = useSelector((state) => state.orders);
 
   const user = useSelector((state) => state.user);
-  document.title = ` LuxeHarmony | Dashborad `;
+  document.title = ` Dashborad - LuxeHarmony `;
 
   useEffect(() => {
     const getOrders = async () => {

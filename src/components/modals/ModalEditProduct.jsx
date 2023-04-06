@@ -282,7 +282,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                           <div className="bg-bgForthColor rounded flex items-center">
                             <textarea
                               onChange={(e) => setSubtitle(e.target.value)}
-                              className="rounded bg-bgForthColor w-full mr-2 py-1 px-2"
+                              className="rounded bg-bgForthColor w-full mr-2 py-1 px-2 h-[100px]"
                               type="text"
                               name=""
                               id=""

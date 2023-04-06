@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState("1234");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  document.title = ` LuxeHarmony | Login `;
+  document.title = ` Login - LuxeHarmony`;
 
   const handleLogin = async (e) => {
     e.preventDefault();
