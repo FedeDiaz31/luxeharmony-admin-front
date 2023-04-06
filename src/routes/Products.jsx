@@ -100,8 +100,8 @@ function Products() {
         <ModalAddProduct handleCloseModalProduct={handleCloseModalProduct} />
       )}
       <div className="p-5 fade-in">
-        <div className="flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
-          <h3 className="font-bold hidden tablet:block text-2xl">Products</h3>
+        <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
+          <h3 className="font-bold text-2xl">Products</h3>
           <div className="flex gap-3 items-center">
             {/*             Searcher */}
             <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">

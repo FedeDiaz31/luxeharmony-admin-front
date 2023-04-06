@@ -28,10 +28,12 @@ function Dashboard() {
     getOrders();
   }, []);
 
+  const lastOrders = orders.slice(0, 10);
+
   return (
     <div className="p-5 fade-in px-5 tablet:px-10">
       <div className="">
-        <h3 className="font-semibold text-2xl">Dashboard</h3>
+        <h3 className="font-bold text-2xl">Dashboard</h3>
       </div>
       <div className="mt-5">
         <h4 className="my-5 tablet:ml-10 font-semibold">Last 30 days</h4>
@@ -49,7 +51,7 @@ function Dashboard() {
               <Spinner />
             </div>
           ) : (
-            orders.map((order, i) => {
+            lastOrders.map((order, i) => {
               return <OrderTableBody key={i} order={order} />;
             })
           )}

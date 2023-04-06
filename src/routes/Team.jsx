@@ -28,7 +28,7 @@ function Team() {
   return (
     <div className="p-5  fade-in">
       <div className="flex w-full justify-between items-center gap-3 px-10">
-        <h3 className="font-semibold text-2xl">Team</h3>
+        <h3 className="font-bold text-2xl">Team</h3>
         <div className="flex gap-3 items-center">
           <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">
             <input
