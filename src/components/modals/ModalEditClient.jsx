@@ -2,9 +2,11 @@ import "../../animation/Animations.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { addClients } from "../../redux/clientsReducer";
 
 function ModalEditClient({ handleCloseModalClient, client, setClients }) {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [firstname, setFirstname] = useState(client.firstname);
   const [lastname, setLastname] = useState(client.lastname);
   const [email, setEmail] = useState(client.email);
@@ -27,7 +29,7 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
       url: `${process.env.REACT_APP_API_URL}/users/${client._id}`,
       data: { firstname, lastname, email, adresses },
     });
-    setClients(response.data);
+    dispatch(addClients(response.data));
     handleCloseModalClient();
   };
 
