@@ -40,7 +40,7 @@ function ModalCreateClient({ handleCloseModalClient, setClients }) {
       },
     });
     handleCloseModalClient();
-    setClients(response.data.users);
+    /*     setClients(response.data.users); */
   };
 
   const handleCloseModal = async () => {

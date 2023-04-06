@@ -1,21 +1,28 @@
-import { useEffect, useState, useParams } from "react";
+//Dependencies
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Spinner from "../components/partials/Spinner";
-import Slider from "react-slick";
-import ProductTableBody from "../components/partials/ProductTableBody";
+import { useSelector, useDispatch } from "react-redux";
+import { addProducts } from "../redux/productsReducer";
+import { addBrands } from "../redux/brandsReducer";
+import { addCategories } from "../redux/categoriesReducer";
+
+//CSS
 import "../animation/Animations.css";
+//Components
 import ModalAddProduct from "../components/modals/ModalAddProduct";
+import Spinner from "../components/partials/Spinner";
+import ProductTableBody from "../components/partials/ProductTableBody";
 
 function Products() {
   document.title = ` LuxeHarmony | Products `;
-
+  const dispatch = useDispatch();
   const [filterSelected, setFilterSelected] = useState("brands");
-  const [products, setProducts] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [categories, setCategories] = useState(null);
-  const [brands, setBrands] = useState(null);
   const [categoryFilter, setCategoryFilter] = useState(null);
   const [brandFilter, setBrandFilter] = useState(null);
+  const products = useSelector((state) => state.products);
+  const categories = useSelector((state) => state.categories);
+  const brands = useSelector((state) => state.brands);
   const handleCloseModalProduct = () => setShowModal(false);
   const handleShowModalProduct = () => setShowModal(true);
   const [inputValue, setInpuValue] = useState("");
@@ -28,7 +35,7 @@ function Products() {
         data: { searchValue },
         method: "post",
       });
-      setProducts(response.data);
+      dispatch(addProducts(response.data));
     };
     getProducts();
   }, [inputValue]);
@@ -38,7 +45,7 @@ function Products() {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/categories`
       );
-      setCategories(response.data);
+      dispatch(addCategories(response.data));
     };
     getCategories();
   }, []);
@@ -48,7 +55,7 @@ function Products() {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/brands`
       );
-      setBrands(response.data);
+      dispatch(addBrands(response.data));
     };
     getBrands();
   }, []);
@@ -57,7 +64,7 @@ function Products() {
     setInpuValue(value);
   };
 
-  ////////////////////
+  //////////////////// PASAR FILTROS A REDUX
   useEffect(() => {
     const getProducts = async () => {
       const brand = brandFilter;
@@ -66,7 +73,7 @@ function Products() {
         data: { brand },
         method: "post",
       });
-      setProducts(response.data);
+      dispatch(addProducts(response.data));
     };
     getProducts();
   }, [brandFilter]);
@@ -80,10 +87,12 @@ function Products() {
         data: { category },
         method: "post",
       });
-      setProducts(response.data);
+      dispatch(addProducts(response.data));
     };
     getProducts();
   }, [categoryFilter]);
+
+  /////////////////////
 
   return (
     <>

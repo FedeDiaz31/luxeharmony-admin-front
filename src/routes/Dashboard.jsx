@@ -1,13 +1,16 @@
 import CardDashboard from "../components/partials/CardDashboard";
 import OrderTableBody from "../components/partials/OrderTableBody";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addOrders } from "../redux/ordersReducer";
 import axios from "axios";
 import "../animation/Animations.css";
 import { useEffect, useState } from "react";
 import Spinner from "../components/partials/Spinner";
 
 function Dashboard() {
-  const [orders, setOrders] = useState(null);
+  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orders);
+
   const user = useSelector((state) => state.user);
   document.title = ` LuxeHarmony | Dashborad `;
 
@@ -18,9 +21,9 @@ function Dashboard() {
           Authorization: `Bearer ${user.admin.token}`,
         },
         method: "get",
-        url: `${process.env.REACT_APP_API_URL}/orders/last`,
+        url: `${process.env.REACT_APP_API_URL}/orders`,
       });
-      setOrders(response.data);
+      dispatch(addOrders(response.data));
     };
     getOrders();
   }, []);

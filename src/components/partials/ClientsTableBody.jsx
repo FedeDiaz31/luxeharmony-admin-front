@@ -15,7 +15,7 @@ function ClientTableBody({ client, setClients }) {
             <ModalEditClient
               client={client}
               handleCloseModalClient={handleCloseModalClient}
-              setClients={setClients}
+              /* setClients={setClients} */
             />
           </div>
         )}
@@ -25,9 +25,6 @@ function ClientTableBody({ client, setClients }) {
         className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200"
         onClick={handleShowModalClient}
       >
-        {/* <div className="w-8/12">
-        <img className="w-6 rotate-12 z-0" src={user.avater} />
-      </div> */}
         <div className="w-full">
           <h3 className="font-semibold">
             {client.firstname} {client.lastname}

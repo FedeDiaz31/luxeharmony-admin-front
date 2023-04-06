@@ -1,15 +1,20 @@
+//Dependencies
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addBrands } from "../redux/brandsReducer";
 import axios from "axios";
+//CSS
+import "../animation/Animations.css";
+//Components
+import ModalCreateBrand from "../components/modals/ModalCreateBrand";
 import Spinner from "../components/partials/Spinner";
 import BrandTableBody from "../components/partials/BrandTableBody";
-import "../animation/Animations.css";
-import ModalCreateBrand from "../components/modals/ModalCreateBrand";
-import { useSelector } from "react-redux";
 
 function Brands() {
+  const dispatch = useDispatch();
   document.title = ` LuxeHarmony | Brands `;
   const [searchBrand, setSearchBrand] = useState("");
-  const [brands, setBrands] = useState(null);
+  const brands = useSelector((state) => state.brands);
 
   const [showModal, setShowModal] = useState(false);
   const handleCloseModalBrand = () => setShowModal(false);
@@ -26,17 +31,17 @@ function Brands() {
         url: `${process.env.REACT_APP_API_URL}/brands/search`,
         data: { searchBrand },
       });
-      setBrands(response.data);
+      dispatch(addBrands(response.data));
     };
     getBrands();
-  }, [searchBrand][brands]);
+  }, [searchBrand]);
 
   return (
     <>
       {showModal && (
         <ModalCreateBrand
           handleCloseModalBrand={handleCloseModalBrand}
-          setBrands={setBrands}
+          /* setBrands={setBrands} */
         />
       )}
       <div className="p-5 fade-in">
@@ -75,7 +80,10 @@ function Brands() {
           <ul className="mt-3 grid gap-1 rounded-lg pb-4">
             {brands.map((brand, i) => {
               return (
-                <BrandTableBody key={i} brand={brand} setBrands={setBrands} />
+                <BrandTableBody
+                  key={i}
+                  brand={brand} /* setBrands={setBrands} */
+                />
               );
             })}
           </ul>

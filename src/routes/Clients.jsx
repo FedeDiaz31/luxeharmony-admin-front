@@ -3,46 +3,41 @@ import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import ClientsTableBody from "../components/partials/ClientsTableBody";
 import ModalCreateClient from "../components/modals/ModalcreateClient";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addClients } from "../redux/clientsReducer";
 
 function Users() {
   document.title = ` LuxeHarmony | Clients `;
-  const [clients, setClients] = useState(null);
+  const dispatch = useDispatch();
+  const clients = useSelector((state) => state.clients);
   const user = useSelector((state) => state.user);
   const [searchValue, setSearchValue] = useState("");
   const [showCreateClientModal, setShowCreateClientModal] = useState(false);
-  useEffect(
-    () => {
-      const getUsers = async () => {
-        const response = await axios({
-          headers: {
-            Authorization: `Bearer ${user.admin.token}`,
-          },
-          method: "post",
-          url: `${process.env.REACT_APP_API_URL}/users/search`,
-          data: { searchValue },
-        });
-        setClients(response.data);
-      };
-      getUsers();
-    },
-    [searchValue],
-    [clients]
-  );
 
   const handleCloseModalClient = () => {
     setShowCreateClientModal(false);
   };
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const response = await axios({
+        headers: {
+          Authorization: `Bearer ${user.admin.token}`,
+        },
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}/users/search`,
+        data: { searchValue },
+      });
+      dispatch(addClients(response.data));
+    };
+    getUsers();
+  }, [searchValue]);
+
   return (
     <>
       {showCreateClientModal && (
         <div>
-          {" "}
-          <ModalCreateClient
-            handleCloseModalClient={handleCloseModalClient}
-            setClients={setClients}
-          />
+          <ModalCreateClient handleCloseModalClient={handleCloseModalClient} />
         </div>
       )}
       <div className="p-5  fade-in">
@@ -89,7 +84,7 @@ function Users() {
                   <ClientsTableBody
                     key={i}
                     client={client}
-                    setClients={setClients}
+                    /*    setClients={setClients} */
                   />
                 );
               })}

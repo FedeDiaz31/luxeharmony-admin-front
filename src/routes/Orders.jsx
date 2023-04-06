@@ -1,28 +1,11 @@
 import OrderTableBody from "../components/partials/OrderTableBody";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import "../animation/Animations.css";
-import { useEffect, useState } from "react";
 import Spinner from "../components/partials/Spinner";
 
 function Orders() {
   document.title = ` LuxeHarmony | Orders `;
-  const [orders, setOrders] = useState(null);
-  const user = useSelector((state) => state.user);
-
-  useEffect(() => {
-    const getOrders = async () => {
-      const response = await axios({
-        headers: {
-          Authorization: `Bearer ${user.admin.token}`,
-        },
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}/orders/last`,
-      });
-      setOrders(response.data);
-    };
-    getOrders();
-  }, []);
+  const orders = useSelector((state) => state.orders);
 
   return (
     <>

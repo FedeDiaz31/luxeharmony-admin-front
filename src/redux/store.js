@@ -1,7 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./userReducer";
 import storage from 'redux-persist/lib/storage'
 import { combineReducers } from "redux";
+import userReducer from "./userReducer";
+import adminsReducer from "./adminsReducer";
+import clientsReducer from "./clientsReducer";
+import ordersReducer from "./ordersReducer";
+import productsReducer from "./productsReducer";
+import brandsReducer from "./brandsReducer";
+import categoriesReducer from "./categoriesReducer";
 
 import {
     persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER
@@ -10,6 +16,12 @@ import {
 
 const rootReducer = combineReducers({
     user: userReducer,
+    admins: adminsReducer,
+    clients: clientsReducer,
+    orders: ordersReducer,
+    products: productsReducer,
+    brands: brandsReducer,
+    categories: categoriesReducer
 });
 
 const persistConfig = {
