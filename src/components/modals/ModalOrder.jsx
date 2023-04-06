@@ -39,6 +39,7 @@ function ModalOrder({ handleCloseModalOrder, order }) {
       url: `${process.env.REACT_APP_API_URL}/orders/${order._id}`,
       data: { idStatus: idStatus },
     });
+    handleCloseModalOrder();
   };
 
   return (

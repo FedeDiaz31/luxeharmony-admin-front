@@ -70,6 +70,7 @@ function Products() {
     };
     getProducts();
   }, [brandFilter]);
+
   /////////////////////
   useEffect(() => {
     const getProducts = async () => {
@@ -237,15 +238,6 @@ function Products() {
             )}
           </div>
         )}
-
-        <div className="flex font-semibold text-lg px-5 mt-5">
-          <div className="w-8/12"></div>
-          <div className="w-full">Brand</div>
-          <div className="w-full hidden tablet:block">Model</div>
-          <div className="w-full text-end">Price</div>
-          <div className="w-full text-end hidden laptop:block">Stock</div>
-          <div className="w-full"></div>
-        </div>
         {products ? (
           <ul className="mt-3 grid gap-1 rounded-lg pb-4">
             {products.map((product, i) => {

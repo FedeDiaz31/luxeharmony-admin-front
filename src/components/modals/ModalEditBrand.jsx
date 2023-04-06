@@ -63,85 +63,81 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
             >
               X
             </button>
-            {/*             Form Edit Product */}
+            {/*             Form Edit Brand */}
 
-            <div className="flex text-white items-center p-5 px-10">
-              {/*                 Images Info of Product */}
-
-              <div className="flex flex-col ml-10">
-                <h2 className="font-bold text-lg">Edit Brand</h2>
-                <div className="min-h-[250px] mt-5">
-                  <div className="w-full fade-in">
-                    {/*                    Page 1 Edit of Product */}
-                    <div className="flex ">
-                      <img
-                        className="w-12 h-10 z-0 ml-[5vh] "
-                        src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
-                        alt="logo"
-                      />
-                      <h4 className="font-semibold ml-[10vh]">{brand.name}</h4>
-                    </div>
-                    <div className="mt-5">
-                      <label htmlFor="name">Edit name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        value={name}
-                        className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                    <div className="mt-5">
-                      <label htmlFor="name">Edit logo </label>
-                      <input
-                        type="file"
-                        name="logo"
-                        id="logo"
-                        className="rounded bg-bgForthColor ml-11 mr-2 py-1 px-1"
-                        onChange={(e) => {
-                          setLogo(e.target.files[0]);
-                        }}
-                        multiple
-                      />
-                    </div>
-                    <div className="flex mt-10">
-                      <p className="mr-5">Do you want to delete this brand?</p>
-                      <button
-                        onClick={() => setShowDeleteModal(true)}
-                        className="bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200 hover:bg-bgPrimaryColor hover:text-textSecondary"
-                      >
-                        Delete
-                      </button>
-                    </div>
+            <div className="flex flex-col py-3 px-5">
+              <h2 className="font-bold text-lg">Edit Brand</h2>
+              <div className="min-h-[250px] mt-3">
+                <div className="fade-in">
+                  {/*                    Page Edit of Brand */}
+                  <div className="flex justify-center gap-3 items-center">
+                    <img
+                      className="w-12 h-10 z-0 object-contain "
+                      src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
+                      alt="logo"
+                    />
+                    <h4 className="font-semibold">{brand.name}</h4>
                   </div>
-                  {showDeleteModal && (
-                    <div className="flex justify-between mt-3 p-2 rounded bg-bgSoftRedColor">
-                      <p className="mr-10 text-textSecondary ">Are you sure?</p>
-                      <button
-                        onClick={() => setShowDeleteModal(false)}
-                        className="w-[17vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
-                      >
-                        No, close modal
-                      </button>{" "}
-                      <button
-                        onClick={handleDelete}
-                        className="w-[17vh] ml-2 bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
-                      >
-                        Yes, Im sure
-                      </button>
-                    </div>
-                  )}
-
-                  <div className="flex justify-center mt-5">
+                  <div className="mt-3">
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      value={name}
+                      className="rounded bg-bgForthColor ml-3 py-1 px-1"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div className="mt-5">
+                    <label htmlFor="name">Logo</label>
+                    <input
+                      type="file"
+                      name="logo"
+                      id="logo"
+                      className="rounded bg-bgForthColor ml-3 py-1 px-1"
+                      onChange={(e) => {
+                        setLogo(e.target.files[0]);
+                      }}
+                      multiple
+                    />
+                  </div>
+                  <div className="flex mt-10 flex-col items-center">
+                    <p className="mr-5">Do you want to delete this brand?</p>
                     <button
-                      className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
-                      onClick={handleEdit}
+                      onClick={() => setShowDeleteModal(true)}
+                      className="bg-bgSecondaryColor w-[150px] text-textPrimary mt-2 rounded transition-all duration-200 hover:bg-bgPrimaryColor hover:text-textSecondary"
                     >
-                      <img className="w-8" src="edit-icon.png" alt="" />
-                      <h2 className="font-bold">Edit</h2>
+                      Delete
                     </button>
                   </div>
+                </div>
+                {showDeleteModal && (
+                  <div className="flex justify-between mt-3 p-2 rounded bg-bgSoftRedColor">
+                    <p className="mr-10 text-textSecondary ">Are you sure?</p>
+                    <button
+                      onClick={() => setShowDeleteModal(false)}
+                      className="w-[17vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
+                    >
+                      No, close modal
+                    </button>{" "}
+                    <button
+                      onClick={handleDelete}
+                      className="w-[17vh] ml-2 bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
+                    >
+                      Yes, Im sure
+                    </button>
+                  </div>
+                )}
+
+                <div className="flex justify-center mt-5">
+                  <button
+                    className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                    onClick={handleEdit}
+                  >
+                    <img className="w-8" src="edit-icon.png" alt="" />
+                    <h2 className="font-bold">Edit</h2>
+                  </button>
                 </div>
               </div>
             </div>
