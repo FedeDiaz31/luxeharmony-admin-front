@@ -13,6 +13,7 @@ function Users() {
   const user = useSelector((state) => state.user);
   const [searchValue, setSearchValue] = useState("");
   const [showCreateClientModal, setShowCreateClientModal] = useState(false);
+  const [searchClients, setSearchClients] = useState(null);
 
   const handleCloseModalClient = () => {
     setShowCreateClientModal(false);
@@ -32,6 +33,14 @@ function Users() {
     };
     getUsers();
   }, [searchValue]);
+
+  useEffect(() => {
+    const filterClients = clients.filter((client) =>
+      client.firstname.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    setSearchClients(filterClients);
+  });
 
   return (
     <>
@@ -79,7 +88,7 @@ function Users() {
               <div className="w-full"></div>
             </div> */}
             <ul className="mt-3 pb-4 grid gap-1">
-              {clients.map((client, i) => {
+              {searchClients.map((client, i) => {
                 return (
                   <ClientsTableBody
                     key={i}
