@@ -1,9 +1,11 @@
 import "../../animation/Animations.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { createClient } from "../../redux/clientsReducer";
 
 function ModalCreateClient({ handleCloseModalClient, setClients }) {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [showMoreInfo, setShowMoreInfo] = useState(true);
   const [firstname, setFirstname] = useState("");
@@ -39,8 +41,9 @@ function ModalCreateClient({ handleCloseModalClient, setClients }) {
         country,
       },
     });
+
+    dispatch(createClient(response.data.user));
     handleCloseModalClient();
-    /*     setClients(response.data.users); */
   };
 
   const handleCloseModal = async () => {

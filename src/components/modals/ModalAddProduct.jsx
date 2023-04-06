@@ -3,8 +3,6 @@ import "../../animation/Animations.css";
 /* Componentes */
 import { useState } from "react";
 
-import Spinner from "../partials/Spinner";
-
 function ModalProduct({ handleCloseModalProduct }) {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   /*   Close with ESC Function */

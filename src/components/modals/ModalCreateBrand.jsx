@@ -1,14 +1,14 @@
 /* CSS */
 import "../../animation/Animations.css";
 /* Dependencias */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 /* Componentes */
 import axios from "axios";
 
 function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleGoOut = () => {
     handleCloseModalBrand();

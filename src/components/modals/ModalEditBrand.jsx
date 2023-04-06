@@ -1,8 +1,8 @@
 /* CSS */
 import "../../animation/Animations.css";
 /* Dependencias */
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 /* Componentes */
 import axios from "axios";
 

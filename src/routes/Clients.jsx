@@ -6,6 +6,8 @@ import ModalCreateClient from "../components/modals/ModalcreateClient";
 import { useSelector, useDispatch } from "react-redux";
 import { addClients } from "../redux/clientsReducer";
 
+import slugify from "slugify";
+
 function Users() {
   document.title = ` LuxeHarmony | Clients `;
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ function Users() {
   const user = useSelector((state) => state.user);
   const [searchValue, setSearchValue] = useState("");
   const [showCreateClientModal, setShowCreateClientModal] = useState(false);
-  const [searchClients, setSearchClients] = useState(null);
+  const [searchClients, setSearchClients] = useState([]);
 
   const handleCloseModalClient = () => {
     setShowCreateClientModal(false);
@@ -32,15 +34,21 @@ function Users() {
       dispatch(addClients(response.data));
     };
     getUsers();
-  }, [searchValue]);
+  }, []);
 
   useEffect(() => {
-    const filterClients = clients.filter((client) =>
-      client.firstname.toLowerCase().includes(searchValue.toLowerCase())
+    const filterClients = clients.filter(
+      (client) =>
+        slugify(client.firstname)
+          .toLowerCase()
+          .includes(slugify(searchValue.toLowerCase())) ||
+        slugify(client.lastname)
+          .toLowerCase()
+          .includes(slugify(searchValue.toLowerCase()))
     );
 
     setSearchClients(filterClients);
-  });
+  }, [searchValue]);
 
   return (
     <>
@@ -78,7 +86,7 @@ function Users() {
 
         {clients ? (
           <>
-            {/*  <div className="flex font-semibold text-lg px-5 mt-5">
+            {/* <div className="flex font-semibold text-lg px-5 mt-5">
               <div className="w-full">Full name</div>
               <div className="w-full text-end hidden laptop:block">Email</div>
               <div className="w-full text-end">Orders</div>
