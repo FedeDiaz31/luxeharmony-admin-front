@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import ClientsTableBody from "../components/partials/ClientsTableBody";
-import ModalCreateClient from "../components/modals/ModalcreateClient";
+import ModalCreateClient from "../components/modals/ModalCreateClient";
 import { useSelector, useDispatch } from "react-redux";
 import { addClients } from "../redux/clientsReducer";
 

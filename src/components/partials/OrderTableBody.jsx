@@ -20,10 +20,9 @@ function OrderTableBody({ order }) {
           </div>
         )}
       </div>
-
       <li
         onClick={handleShowModalOrder}
-        className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200"
+        className="cursor-pointer flex items-center justify-between px-3 tablet:px-5 py-2 mx-2 rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200"
       >
         <div className="w-full">
           <h3 className="font-semibold">
@@ -40,11 +39,11 @@ function OrderTableBody({ order }) {
             {format(new Date(order.createdAt), "dd'/'M'/'yy (h:mm a)")}
           </h3>
         </div>
-        <div className="w-full text-end">
+        <div className="text-sm tablet:text-base w-full text-end">
           <h3>{order.status.name}</h3>
         </div>
-        <div className="w-full text-end">
-          <button className=" hover:bg-bgPrimaryColor text-textPrimary px-3 py-1 rounded-b-md transition-all duration-200 font-bold">
+        <div className="ml-3 tablet:ml-0 tablet:w-full text-end">
+          <button className="hover:bg-bgPrimaryColor text-textPrimary w-6 tablet:w-auto tablet:px-3 py-1 rounded-b-md transition-all duration-200 font-bold">
             <img className="w-6" src="edit-icon.png" alt="" />
           </button>
         </div>
