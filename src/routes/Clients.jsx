@@ -48,7 +48,7 @@ function Users() {
     );
 
     setSearchClients(filterClients);
-  }, [searchValue]);
+  }, [searchValue, clients]);
 
   return (
     <>
