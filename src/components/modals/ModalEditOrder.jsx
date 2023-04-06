@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { editOrder } from "../../redux/ordersReducer";
 import { useEffect } from "react";
 
-function ModalOrder({ handleCloseModalOrder, order }) {
+function ModalEditOrder({ handleCloseModalOrder, order }) {
   const dispatch = useDispatch();
   const [idStatus, setIdStatus] = useState(order.status);
   const user = useSelector((state) => state.user);
@@ -66,7 +66,7 @@ function ModalOrder({ handleCloseModalOrder, order }) {
 
             <div className="flex flex-col">
               <h2 className="font-bold text-lg">Order</h2>
-              <h3 className="text-lg font-light">ID: {order._id}</h3>
+              <h3 className="text-sm font-light">ID: {order._id}</h3>
               <div className="">
                 <div className="slide-top">
                   {/*                     Page 2 Edit of Product */}
@@ -76,7 +76,7 @@ function ModalOrder({ handleCloseModalOrder, order }) {
                       type="text"
                       name="name"
                       id="name"
-                      className="rounded bg-bgForthColor min-w-[150px] ml-10 mr-2 py-1 px-1"
+                      className="rounded bg-bgForthColor min-w-[150px] ml-3 py-1 px-1"
                       onChange={(e) => setIdStatus(e.target.value)}
                     >
                       {status?.map((st) => {
@@ -107,4 +107,4 @@ function ModalOrder({ handleCloseModalOrder, order }) {
   );
 }
 
-export default ModalOrder;
+export default ModalEditOrder;

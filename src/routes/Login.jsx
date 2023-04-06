@@ -6,8 +6,8 @@ import axios from "axios";
 import { useState } from "react";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("luxe@admin.com");
+  const [password, setPassword] = useState("1234");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   document.title = ` LuxeHarmony | Login `;

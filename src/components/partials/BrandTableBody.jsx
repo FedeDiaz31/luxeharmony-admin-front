@@ -29,7 +29,7 @@ function BrandTableBody({ brand, setBrands }) {
             src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
           />
         </div>
-        <div className="w-full text-end">
+        <div className="w-full text-center">
           <h3 className="font-semibold">{brand.name}</h3>
         </div>
         <div className="w-full text-end">

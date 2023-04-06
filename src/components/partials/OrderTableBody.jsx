@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import ModalOrder from "../modals/ModalOrder";
+import ModalEditOrder from "../modals/ModalEditOrder";
 import { useState } from "react";
 
 function OrderTableBody({ order }) {
@@ -13,7 +13,7 @@ function OrderTableBody({ order }) {
       <div className="z-20">
         {showModal && (
           <div>
-            <ModalOrder
+            <ModalEditOrder
               order={order}
               handleCloseModalOrder={handleCloseModalOrder}
             />
@@ -30,17 +30,14 @@ function OrderTableBody({ order }) {
             {order.user.firstname} {order.user.lastname}
           </h3>
         </div>
-        <div className="w-full text-end">
-          <h3 className="text-textTertiary hidden laptop:block">
-            {order.email}
+        <div className="w-full">
+          <h3 className="text-textTertiary text-center text-sm">
+            U$D {order.totalPrice}
           </h3>
         </div>
-        <div className="w-full">
-          <h3 className="text-textTertiary text-sm">U$D {order.totalPrice}</h3>
-        </div>
-        <div className="w-full text-center hidden laptop:block">
+        <div className="w-full text-end hidden laptop:block">
           <h3 className="text-textTertiary text-sm">
-            {format(new Date(order.createdAt), "dd'/'M'/'yy")}
+            {format(new Date(order.createdAt), "dd'/'M'/'yy (h:mm a)")}
           </h3>
         </div>
         <div className="w-full text-end">
