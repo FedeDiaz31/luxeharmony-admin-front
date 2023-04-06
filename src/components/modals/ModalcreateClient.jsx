@@ -24,29 +24,23 @@ function ModalCreateClient({ handleCloseModalClient, setClients }) {
   });
 
   const handleCreateClient = async () => {
-    const formData = new FormData();
-    formData.append("firstname", firstname);
-    formData.append("lastname", lastname);
-    formData.append("email", email);
-    formData.append("password", password);
-    // formData.append("street", street);
-    // formData.append("reference", reference);
-    // formData.append("country", country);
-    // formData.append("state", state);
-    // formData.append("city", city);
-    console.log(firstname);
-    console.log(lastname);
-    console.log(email);
-    console.log(password);
-    await axios({
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+    const response = await axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}/users`,
-      data: formData,
+      data: {
+        firstname,
+        lastname,
+        email,
+        password,
+        street,
+        reference,
+        city,
+        state,
+        country,
+      },
     });
     handleCloseModalClient();
+    setClients(response.data.users);
   };
 
   const handleCloseModal = async () => {
@@ -235,7 +229,7 @@ function ModalCreateClient({ handleCloseModalClient, setClients }) {
                     className=" gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
                   >
                     <img className="w-8" src="edit-icon.png" alt="" />
-                    <h2 className="font-bold">Edit</h2>
+                    <h2 className="font-bold">Create</h2>
                   </button>
                 )}
               </div>

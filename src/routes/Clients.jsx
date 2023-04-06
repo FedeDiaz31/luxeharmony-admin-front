@@ -11,20 +11,24 @@ function Users() {
   const user = useSelector((state) => state.user);
   const [searchValue, setSearchValue] = useState("");
   const [showCreateClientModal, setShowCreateClientModal] = useState(false);
-  useEffect(() => {
-    const getUsers = async () => {
-      const response = await axios({
-        headers: {
-          Authorization: `Bearer ${user.admin.token}`,
-        },
-        method: "post",
-        url: `${process.env.REACT_APP_API_URL}/users/search`,
-        data: { searchValue },
-      });
-      setClients(response.data);
-    };
-    getUsers();
-  }, [searchValue]);
+  useEffect(
+    () => {
+      const getUsers = async () => {
+        const response = await axios({
+          headers: {
+            Authorization: `Bearer ${user.admin.token}`,
+          },
+          method: "post",
+          url: `${process.env.REACT_APP_API_URL}/users/search`,
+          data: { searchValue },
+        });
+        setClients(response.data);
+      };
+      getUsers();
+    },
+    [searchValue],
+    [clients]
+  );
 
   const handleCloseModalClient = () => {
     setShowCreateClientModal(false);

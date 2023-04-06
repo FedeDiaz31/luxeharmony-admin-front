@@ -29,7 +29,7 @@ function Brands() {
       setBrands(response.data);
     };
     getBrands();
-  }, [searchBrand, brands]);
+  }, [searchBrand][brands]);
 
   return (
     <>
