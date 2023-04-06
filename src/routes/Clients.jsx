@@ -97,13 +97,7 @@ function Users() {
             </div> */}
             <ul className="mt-3 pb-4 grid gap-1">
               {searchClients.map((client, i) => {
-                return (
-                  <ClientsTableBody
-                    key={i}
-                    client={client}
-                    /*    setClients={setClients} */
-                  />
-                );
+                return <ClientsTableBody key={i} client={client} />;
               })}
             </ul>{" "}
           </>

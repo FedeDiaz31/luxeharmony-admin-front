@@ -10,8 +10,15 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
   const [firstname, setFirstname] = useState(client.firstname);
   const [lastname, setLastname] = useState(client.lastname);
   const [email, setEmail] = useState(client.email);
-  const [adresses, setAdresses] = useState(client.adresses);
+  const [street, setStreet] = useState(client.address.street);
+  const [reference, setReference] = useState(client.address.reference);
+  const [city, setCity] = useState(client.address.city);
+  const [state, setState] = useState(client.address.state);
+  const [country, setCountry] = useState(client.address.country);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showMoreInfo, setShowMoreInfo] = useState(true);
+
+  console.log(client);
 
   /*   Close with ESC Function */
   window.addEventListener("keydown", (e) => {
@@ -27,7 +34,16 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
       },
       method: "put",
       url: `${process.env.REACT_APP_API_URL}/users/${client._id}`,
-      data: { firstname, lastname, email, adresses },
+      data: {
+        firstname,
+        lastname,
+        email,
+        street,
+        state,
+        country,
+        reference,
+        city,
+      },
     });
     dispatch(editClient(response.data));
     handleCloseModalClient();
@@ -68,66 +84,153 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
               <h2 className="font-bold text-lg">
                 Update data of {client.firstname} {client.lastname}{" "}
               </h2>
-              <div className="min-h-[250px]">
-                <div className="w-full fade-in">
-                  {/*                    Page 1 Edit of Product */}
-                  <div className="mt-5 justify-between">
-                    <label htmlFor="firstname">Edit firstname</label>
-                    <input
-                      type="text"
-                      name="firstname"
-                      id="firstname"
-                      value={firstname}
-                      className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                      onChange={(e) => setFirstname(e.target.value)}
-                    />
+              {/* primera página */}
+
+              {showMoreInfo ? (
+                <>
+                  <div className="min-h-[250px]">
+                    <div className="w-full fade-in">
+                      {/*                    Page 1 Edit of Product */}
+
+                      <div className="mt-5 flex justify-between">
+                        <label htmlFor="firstname">Firstname</label>
+                        <input
+                          type="text"
+                          name="firstname"
+                          id="firstname"
+                          value={firstname}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setFirstname(e.target.value)}
+                        />
+                      </div>
+                      <div className="mt-5 flex justify-between">
+                        <label htmlFor="lastname">Lastname</label>
+                        <input
+                          type="text"
+                          name="lastname"
+                          id="lastname"
+                          value={lastname}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setLastname(e.target.value)}
+                        />
+                      </div>
+                      <div className="mt-5 flex justify-between">
+                        <label htmlFor="email" className="mr-6">
+                          Email
+                        </label>
+                        <input
+                          type="mail"
+                          name="email"
+                          id="email"
+                          value={email}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="mt-5 flex justify-between mb-7">
+                        <label htmlFor="street">Street</label>
+                        <input
+                          type="text"
+                          name="street"
+                          id="street"
+                          value={street}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setStreet(e.target.value)}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-5 justify-between">
-                    <label htmlFor="lastname">Edit lastname</label>
-                    <input
-                      type="text"
-                      name="lastname"
-                      id="lastname"
-                      value={lastname}
-                      className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                      onChange={(e) => setLastname(e.target.value)}
-                    />
-                  </div>
-                  <div className="mt-5 justify-between">
-                    <label htmlFor="email" className="mr-6">
-                      Edit email
-                    </label>
-                    <input
-                      type="mail"
-                      name="email"
-                      id="email"
-                      value={email}
-                      className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
+                </>
+              ) : (
+                <>
+                  {/* ///////// Pagina 2 ///////// */}
+                  <div className="min-h-[250px]">
+                    <div className="w-full fade-in">
+                      <div className="mt-5 flex justify-between">
+                        <label htmlFor="reference">Reference</label>
+                        <input
+                          type="text"
+                          name="reference"
+                          id="reference"
+                          value={reference}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setReference(e.target.value)}
+                        />
+                      </div>
+                      <div className="mt-5 flex justify-between">
+                        <label htmlFor="city" className="mr-6">
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          name="city"
+                          id="city"
+                          value={city}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setCity(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="mt-5 flex justify-between">
+                        <label htmlFor="state">State</label>
+                        <input
+                          type="text"
+                          name="state"
+                          id="state"
+                          value={state}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setState(e.target.value)}
+                        />
+                      </div>
+                      <div className="mt-5 mb-7 flex justify-between">
+                        <label htmlFor="country">Country</label>
+                        <input
+                          type="text"
+                          name="country"
+                          id="country"
+                          value={country}
+                          className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
+                          onChange={(e) => setCountry(e.target.value)}
+                        />
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="mt-5 justify-center">
-                    <label htmlFor="adresses">Edit adresses</label>
-                    <input
-                      type="text"
-                      name="adresses"
-                      id="adresses"
-                      value={adresses}
-                      className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                      onChange={(e) => setAdresses(e.target.value)}
-                    />
-                  </div>
-                  <div className="flex mt-7">
-                    <p className="mr-5">Do you want to delete this client?</p>
-                    <button
-                      onClick={() => setShowDeleteModal(true)}
-                      className="bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200 hover:bg-bgPrimaryColor hover:text-textSecondary"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
+                  {/* ///////// Pagina 2 ///////// */}
+                </>
+              )}
+              <div className="flex justify-center gap-3 font-bold mt-5">
+                <button
+                  className={
+                    showMoreInfo
+                      ? "bg-bgForthColor text-textSecondary px-8 rounded  transition-all duration-200"
+                      : "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                  }
+                  onClick={() => setShowMoreInfo(true)}
+                >
+                  1
+                </button>
+                <button
+                  className={
+                    showMoreInfo
+                      ? "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                      : "bg-bgForthColor text-textSecondary px-8 rounded transition-all duration-200"
+                  }
+                  onClick={() => setShowMoreInfo(false)}
+                >
+                  2
+                </button>
+              </div>
+
+              <div className="flex mt-7">
+                <p className="mr-5">Do you want to delete this client?</p>
+                <button
+                  onClick={() => setShowDeleteModal(true)}
+                  className="bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200 hover:bg-bgPrimaryColor hover:text-textSecondary"
+                >
+                  Delete
+                </button>
               </div>
 
               {showDeleteModal && (
