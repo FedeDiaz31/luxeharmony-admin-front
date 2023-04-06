@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import ClientsTableBody from "../components/partials/ClientsTableBody";
-import ModalCreateClient from "../components/modals/ModalcreateClient";
+import ModalCreateClient from "../components/modals/ModalCreateClient";
 import { useSelector, useDispatch } from "react-redux";
 import { addClients } from "../redux/clientsReducer";
 
@@ -13,7 +13,7 @@ function Users() {
   const user = useSelector((state) => state.user);
   const [searchValue, setSearchValue] = useState("");
   const [showCreateClientModal, setShowCreateClientModal] = useState(false);
-  const [searchClients, setSearchClients] = useState(null);
+  const [searchClients, setSearchClients] = useState([]);
 
   const handleCloseModalClient = () => {
     setShowCreateClientModal(false);
@@ -32,7 +32,7 @@ function Users() {
       dispatch(addClients(response.data));
     };
     getUsers();
-  }, [searchValue]);
+  }, []);
 
   useEffect(() => {
     const filterClients = clients.filter((client) =>
@@ -40,7 +40,7 @@ function Users() {
     );
 
     setSearchClients(filterClients);
-  });
+  }, [searchClients]);
 
   return (
     <>
