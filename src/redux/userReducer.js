@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = null;
 
@@ -8,7 +8,6 @@ const userSlice = createSlice({
     reducers: {
         login(state, action) {
             return action.payload;
-
         },
         edit(state, action) {
             state.firstname = action.payload.firstname;

@@ -2,15 +2,17 @@
 import { useState } from "react";
 import "../../animation/Animations.css";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { editOrder } from "../../redux/ordersReducer";
 import { useEffect } from "react";
 
 function ModalOrder({ handleCloseModalOrder, order }) {
+  const dispatch = useDispatch();
   const [idStatus, setIdStatus] = useState(order.status);
   const user = useSelector((state) => state.user);
   const [status, setStatus] = useState(null);
-  /*   Close with ESC Function */
 
+  /*   Close with ESC Function */
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       handleCloseModalOrder();
@@ -31,7 +33,7 @@ function ModalOrder({ handleCloseModalOrder, order }) {
   /*  console.log(status); */
 
   const handleEdit = async () => {
-    await axios({
+    const response = await axios({
       headers: {
         Authorization: `Bearer ${user.admin.token}`,
       },
@@ -39,6 +41,7 @@ function ModalOrder({ handleCloseModalOrder, order }) {
       url: `${process.env.REACT_APP_API_URL}/orders/${order._id}`,
       data: { idStatus: idStatus },
     });
+    dispatch(editOrder(response.data));
     handleCloseModalOrder();
   };
 

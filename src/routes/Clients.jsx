@@ -69,7 +69,7 @@ function Users() {
 
         {clients ? (
           <>
-            <div className="flex font-semibold text-lg px-5 mt-5">
+            {/*  <div className="flex font-semibold text-lg px-5 mt-5">
               <div className="w-full">Full name</div>
               <div className="w-full text-end hidden laptop:block">Email</div>
               <div className="w-full text-end">Orders</div>
@@ -77,7 +77,7 @@ function Users() {
                 Created at
               </div>
               <div className="w-full"></div>
-            </div>
+            </div> */}
             <ul className="mt-3 pb-4 grid gap-1">
               {clients.map((client, i) => {
                 return (

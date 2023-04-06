@@ -70,12 +70,6 @@ function Brands() {
             </button>
           </div>
         </div>
-        <div className="flex font-semibold text-lg px-5 mt-5">
-          <div className="w-8/12">Logo</div>
-          <div className="w-full text-center">Name</div>
-          <div className="w-full text-center">Products</div>
-          <div className="w-full"></div>
-        </div>
         {brands ? (
           <ul className="mt-3 grid gap-1 rounded-lg pb-4">
             {brands.map((brand, i) => {

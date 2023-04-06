@@ -29,15 +29,17 @@ function BrandTableBody({ brand, setBrands }) {
             src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
           />
         </div>
-        <div className="w-full text-center">
+        <div className="w-full text-end">
           <h3 className="font-semibold">{brand.name}</h3>
         </div>
-        <div className="w-full text-center">
-          <h3 className="font-semibold">{brand.products.length}</h3>
+        <div className="w-full text-end">
+          <h3 className="text-textTertiary text-sm">
+            {brand.products.length} product/s
+          </h3>
         </div>
 
         <div className="w-full text-end">
-          <button className=" hover:bg-bgPrimaryColor text-textPrimary px-3 py-1 rounded-b-md transition-all duration-200 font-bold">
+          <button className="hover:bg-bgPrimaryColor text-textPrimary px-3 py-1 rounded-b-md transition-all duration-200 font-bold">
             <img className="w-6" src="edit-icon.png" alt="" />
           </button>
         </div>

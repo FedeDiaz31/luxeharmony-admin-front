@@ -31,15 +31,17 @@ function ClientTableBody({ client, setClients }) {
           </h3>
         </div>
         <div className="w-full text-end">
-          <h3 className="text-textTertiary hidden laptop:block">
+          <h3 className="text-textTertiary hidden text-sm laptop:block">
             {client.email}
           </h3>
         </div>
         <div className="w-full text-end ">
-          <h3 className="text-textTertiary">{client.orders.length}</h3>
+          <h3 className="text-textTertiary text-sm">
+            {client.orders.length} order/s
+          </h3>
         </div>
         <div className="w-full text-end hidden laptop:block">
-          <h3 className="text-textTertiary">
+          <h3 className="text-textTertiary text-sm">
             {format(new Date(client.createdAt), "dd'/'M'/'yy")}
           </h3>
         </div>

@@ -9,12 +9,17 @@ const ordersSlice = createSlice({
         addOrders(state, action) {
             return action.payload;
         },
-        editOrders(state, action) {
-            state.firstname = action.payload.firstname;
-            state.lastname = action.payload.lastname;
+        editOrder(state, action) {
+            return state.map((order) => {
+                if (order._id === action.payload._id) {
+                    return action.payload
+                } else {
+                    return order
+                }
+            })
         },
     },
 });
 
-export const { addOrders, editOrders } = ordersSlice.actions;
+export const { addOrders, editOrder } = ordersSlice.actions;
 export default ordersSlice.reducer;

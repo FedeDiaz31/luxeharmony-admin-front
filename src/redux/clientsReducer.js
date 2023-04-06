@@ -8,11 +8,15 @@ const clientsSlice = createSlice({
     reducers: {
         addClients(state, action) {
             return action.payload;
-
         },
-        editClient(state, action) {
-            state.firstname = action.payload.firstname;
-            state.lastname = action.payload.lastname;
+        editOrder(state, action) {
+            return state.map((client) => {
+                if (client._id === action.payload._id) {
+                    return action.payload
+                } else {
+                    return client
+                }
+            })
         },
     },
 });

@@ -3,6 +3,7 @@ import "../../animation/Animations.css";
 /* Dependencias */
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { editProduct } from "../../redux/productsReducer";
 /* Componentes */
 import Spinner from "../partials/Spinner";
 import axios from "axios";
@@ -51,7 +52,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
     formData.append("slug", slug);
     formData.append("product", product._id);
     formData.append("oldBrand", oldBrand);
-    await axios({
+    const response = await axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}/products/${slug}`,
       data: formData,
@@ -61,6 +62,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
       },
     });
     handleCloseModalProduct();
+    dispatch(editProduct(response.data));
   };
 
   return (

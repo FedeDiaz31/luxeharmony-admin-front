@@ -9,7 +9,6 @@ const brandSlice = createSlice({
         addBrands(state, action) {
             return action.payload;
         },
-
     },
 });
 

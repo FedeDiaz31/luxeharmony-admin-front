@@ -9,9 +9,17 @@ const productSlice = createSlice({
         addProducts(state, action) {
             return action.payload;
         },
-
+        editProduct(state, action) {
+            return state.map((product) => {
+                if (product._id === action.payload._id) {
+                    return action.payload
+                } else {
+                    return product
+                }
+            })
+        },
     },
 });
 
-export const { addProducts } = productSlice.actions;
+export const { addProducts, editProduct } = productSlice.actions;
 export default productSlice.reducer;
