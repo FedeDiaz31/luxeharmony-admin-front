@@ -58,12 +58,12 @@ function Users() {
         </div>
       )} */}
       <div className="p-5  fade-in">
-        <div className="flex w-full justify-between items-center gap-3 px-10">
+        <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
           <h3 className="font-semibold text-2xl">Clientes</h3>
           <div className="flex gap-3 items-center">
             <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">
               <input
-                className="rounded w-72 mr-2 py-1 px-1"
+                className="rounded w-30 mobilXS:w-52 laptop:w-72 tablet:mr-2 py-1 px-1"
                 type="text"
                 name=""
                 id=""
