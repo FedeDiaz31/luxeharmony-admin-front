@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import ClientsTableBody from "../components/partials/ClientsTableBody";
-import ModalCreateClient from "../components/modals/ModalCreateClient";
+/* import ModalCreateClient from "../components/modals/ModalCreateClient"; */
 import { useSelector, useDispatch } from "react-redux";
 import { addClients } from "../redux/clientsReducer";
 
@@ -52,18 +52,18 @@ function Users() {
 
   return (
     <>
-      {showCreateClientModal && (
+      {/*  {showCreateClientModal && (
         <div>
           <ModalCreateClient handleCloseModalClient={handleCloseModalClient} />
         </div>
-      )}
+      )} */}
       <div className="p-5  fade-in">
-        <div className="flex w-full justify-between items-center gap-3 px-10">
+        <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
           <h3 className="font-semibold text-2xl">Clientes</h3>
           <div className="flex gap-3 items-center">
             <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">
               <input
-                className="rounded w-72 mr-2 py-1 px-1"
+                className="rounded w-30 mobilXS:w-52 laptop:w-72 tablet:mr-2 py-1 px-1"
                 type="text"
                 name=""
                 id=""
@@ -83,23 +83,13 @@ function Users() {
             </button>
           </div>
         </div>
-
         {clients ? (
           <>
-            {/* <div className="flex font-semibold text-lg px-5 mt-5">
-              <div className="w-full">Full name</div>
-              <div className="w-full text-end hidden laptop:block">Email</div>
-              <div className="w-full text-end">Orders</div>
-              <div className="w-full text-end hidden laptop:block">
-                Created at
-              </div>
-              <div className="w-full"></div>
-            </div> */}
             <ul className="mt-3 pb-4 grid gap-1">
-              {searchClients.map((client, i) => {
+              {searchClients?.map((client, i) => {
                 return <ClientsTableBody key={i} client={client} />;
               })}
-            </ul>{" "}
+            </ul>
           </>
         ) : (
           <div className="w-full grid place-content-center h-[60vh]">

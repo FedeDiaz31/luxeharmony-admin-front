@@ -11,9 +11,7 @@ function Orders() {
     <>
       <div className="p-5 fade-in">
         <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
-          <h3 className="font-bold text-center tablet:text-start text-2xl">
-            Orders
-          </h3>
+          <h3 className="font-bold text-2xl">Orders</h3>
           <div className="flex gap-3 items-center">
             <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">
               <input
@@ -27,9 +25,6 @@ function Orders() {
                 <img className="w-4" src="search-icon.png" alt="" />
               </button>
             </div>
-            <button className="bg-bgSecondaryColor text-textPrimary px-3 h-8 rounded text-lg font-semibold">
-              +
-            </button>
           </div>
         </div>
         {orders ? (

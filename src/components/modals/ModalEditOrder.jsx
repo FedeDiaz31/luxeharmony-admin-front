@@ -30,8 +30,6 @@ function ModalEditOrder({ handleCloseModalOrder, order }) {
     getStatus();
   }, []);
 
-  /*  console.log(status); */
-
   const handleEdit = async () => {
     const response = await axios({
       headers: {

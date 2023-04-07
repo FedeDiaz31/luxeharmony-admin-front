@@ -1,12 +1,11 @@
 import "../../animation/Animations.css";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import { createClient } from "../../redux/clientsReducer";
 
-function ModalCreateClient({ handleCloseModalClient, setClients }) {
+function ModalCreateClient({ handleCloseModalClient }) {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const [showMoreInfo, setShowMoreInfo] = useState(true);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");

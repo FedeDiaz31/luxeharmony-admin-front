@@ -5,6 +5,7 @@ import ModalCreateAdmin from "../components/modals/ModalCreateAdmin";
 import "../animation/Animations.css";
 import Spinner from "../components/partials/Spinner";
 import TeamTableBody from "../components/partials/TeamTableBody";
+import ModalCreateAdmin from "../components/modals/ModalCreateAdmin";
 
 function Team() {
   document.title = ` LuxeHarmony | Teams `;
@@ -63,6 +64,21 @@ function Team() {
           </div>
         </div>
 
+        {team ? (
+          <>
+            <ul className="mt-3 pb-4 grid gap-1">
+              {team.map((member, i) => {
+                return <TeamTableBody key={i} member={member} />;
+              })}
+            </ul>{" "}
+          </>
+        ) : (
+          <div className="w-full grid place-content-center h-[60vh]">
+            <Spinner />
+          </div>
+        )}
+      </div>
+    </>
         {team ? (
           <>
             <ul className="mt-3 pb-4 grid gap-1">

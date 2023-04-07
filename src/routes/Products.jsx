@@ -102,6 +102,7 @@ function Products() {
       <div className="p-5 fade-in">
         <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
           <h3 className="font-bold text-2xl">Products</h3>
+          {/*           Searcher */}
           <div className="flex gap-3 items-center">
             {/*             Searcher */}
             <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">
@@ -126,7 +127,7 @@ function Products() {
           </div>
         </div>
 
-        <div className="text-white font-semibold flex gap-2 ml-8 mt-5">
+        <div className="text-white font-semibold flex justify-center tablet:justify-start gap-2 tablet:ml-8 mt-5">
           <button
             onClick={() => setFilterSelected("brands")}
             className={`${
@@ -148,7 +149,7 @@ function Products() {
 
           {/*         Borrar filtro */}
           {categoryFilter || brandFilter ? (
-            <div className="flex">
+            <div className="hidden tablet:flex ">
               <div className="flex">
                 <h2 className="mx-3">⦾</h2>
                 <button
@@ -157,7 +158,7 @@ function Products() {
                     setBrandFilter(null);
                     setInpuValue(inputValue);
                   }}
-                  className={`ml-2 hidden tablet:flex border-b-2 pb-1 border-gray-800 hover:bg-gray-700 px-4 transition-all duration-200`}
+                  className={`ml-2 border-b-2 pb-1 border-gray-800 hover:bg-gray-700 px-4 transition-all duration-200`}
                 >
                   Borrar filtro
                 </button>
@@ -174,7 +175,7 @@ function Products() {
 
         {/*        Filtro Categorias */}
         {filterSelected === "categories" && (
-          <div className="px-14 z-[0] relative my-5 fade-in grid">
+          <div className="px-5 tablet:px-14 z-[0] relative my-5 fade-in grid">
             {!categories ? (
               <div className="flex justify-center">
                 <Spinner />
@@ -189,7 +190,7 @@ function Products() {
                       className={`${
                         category.name === categoryFilter &&
                         "bg-bgSecondaryColor text-textPrimary rounded"
-                      } border-b-2 text-lg font-semibold hover:bg-gray-700 px-3 hover:z-0 cursor-pointer text-center transition-all duration-200`}
+                      } border-b-2 text-lg font-semibold hover:bg-gray-700 px-1 tablet:px-3 hover:z-0 cursor-pointer text-center transition-all duration-200`}
                     >
                       {category.name}
                     </div>
@@ -202,13 +203,13 @@ function Products() {
 
         {/*        Filtro Marcas */}
         {filterSelected === "brands" && (
-          <div className="px-14 z-[0] relative my-8 fade-in">
+          <div className="px-5 tablet:px-14 z-[0] relative my-8 fade-in">
             {!brands ? (
               <div className="flex justify-center">
                 <Spinner />
               </div>
             ) : (
-              <div className="flex justify-center items-baseline gap-4">
+              <div className="flex justify-center items-baseline gap-2 tablet:gap-4">
                 {brands.map((brand) => {
                   return (
                     <div
@@ -217,11 +218,11 @@ function Products() {
                       className={`${
                         brand.name === brandFilter &&
                         "bg-bgSecondaryColor text-textPrimary rounded"
-                      } cursor-pointer text-center text-lg px-3 font-semibold transition-all duration-200`}
+                      } cursor-pointer text-center text-lg tablet:px-3 font-semibold transition-all duration-200`}
                     >
                       {brand.name === brandFilter ? (
                         <img
-                          className="w-24 my-1 object-contain"
+                          className="w-10 tablet:w-24 my-1 object-contain"
                           src={
                             brand.logo.includes("http")
                               ? brand.logo
@@ -231,7 +232,7 @@ function Products() {
                         />
                       ) : (
                         <img
-                          className="w-24 my-1 object-contain"
+                          className="w-10 tablet:w-24 my-1 object-contain"
                           src={
                             brand.logo2.includes("http")
                               ? brand.logo2

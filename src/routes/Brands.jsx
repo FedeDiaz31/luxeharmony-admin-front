@@ -43,9 +43,7 @@ function Brands() {
       )}
       <div className="p-5 fade-in">
         <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
-          <h3 className="font-bold text-center tablet:text-start text-2xl">
-            Brands
-          </h3>
+          <h3 className="font-semibold text-2xl">Brands</h3>
           <div className="flex gap-3 items-center">
             <div className="bg-bgPrimaryColor px-2 py-1 rounded flex items-center">
               <input

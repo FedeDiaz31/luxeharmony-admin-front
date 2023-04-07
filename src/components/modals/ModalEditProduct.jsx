@@ -34,7 +34,9 @@ function ModalProduct({ handleCloseModalProduct, product }) {
   /*  GET BRANDS */
   useEffect(() => {
     const getBrands = async () => {
-      const response = await axios.get("http://localhost:8000/brands");
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/brands`
+      );
       setBrands(response.data);
     };
     getBrands();
