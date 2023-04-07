@@ -39,10 +39,7 @@ function Brands() {
   return (
     <>
       {showModal && (
-        <ModalCreateBrand
-          handleCloseModalBrand={handleCloseModalBrand}
-          /* setBrands={setBrands} */
-        />
+        <ModalCreateBrand handleCloseModalBrand={handleCloseModalBrand} />
       )}
       <div className="p-5 fade-in">
         <div className="grid tablet:flex w-full justify-center tablet:justify-between items-center gap-3 tablet:px-10">
