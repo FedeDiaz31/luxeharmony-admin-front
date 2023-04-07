@@ -48,7 +48,7 @@ function ModalCreateAdmin({ handleCloseModalCreateAdmin }) {
   const handleCloseModal = async () => {
     handleCloseModalCreateAdmin();
   };
-  console.log(team);
+
   return (
     <div className="fixed inset-0 bg-modal z-40">
       <div className="flex items-center justify-center min-h-screen text-center px-8 tablet:px-0">

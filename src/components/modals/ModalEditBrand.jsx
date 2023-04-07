@@ -9,7 +9,7 @@ import axios from "axios";
 
 function ModalEditBrand({ handleCloseModalBrand, brand }) {
   const user = useSelector((state) => state.user);
-  const dispactch = useDispatch();
+  const dispatch = useDispatch();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleGoOut = () => {
@@ -32,7 +32,7 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
       url: `${process.env.REACT_APP_API_URL}/brands/${brand._id}`,
       data: formData,
     });
-    dispactch(editBrand(response.data));
+    dispatch(editBrand(response.data));
     handleCloseModalBrand();
   };
 
@@ -44,7 +44,7 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
       method: "delete",
       url: `${process.env.REACT_APP_API_URL}/brands/${brand._id}`,
     });
-    dispactch(deleteBrand(response.data));
+    dispatch(deleteBrand(response.data));
     handleCloseModalBrand();
   };
 

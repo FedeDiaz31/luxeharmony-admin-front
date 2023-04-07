@@ -5,6 +5,7 @@ import "../animation/Animations.css";
 import Spinner from "../components/partials/Spinner";
 import TeamTableBody from "../components/partials/TeamTableBody";
 import ModalCreateAdmin from "../components/modals/ModalCreateAdmin";
+
 import { addTeam } from "../redux/teamReducer";
 
 function Team() {
@@ -13,6 +14,7 @@ function Team() {
   const team = useSelector((state) => state.team);
   const user = useSelector((state) => state.user);
   const [showCreateModal, setShowCreateModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   useEffect(() => {
     const getTeam = async () => {
@@ -30,6 +32,10 @@ function Team() {
 
   const handleCloseModalCreateAdmin = () => {
     setShowCreateModal(false);
+  };
+
+  const handleCloseModalEditAdmin = () => {
+    setShowEditModal(false);
   };
 
   return (

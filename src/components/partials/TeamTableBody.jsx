@@ -1,25 +1,26 @@
 import { format } from "date-fns";
 import { useState } from "react";
+import ModalEditAdmin from "../../components/modals/ModalEditAdmin";
 
-function ProductTableBody({ member }) {
+function TeamTableBody({ member }) {
   const [showModal, setShowModal] = useState(false);
-
   const handleCloseModalMember = () => setShowModal(false);
   const handleShowModalMember = () => setShowModal(true);
+
   return (
     <>
-      {/*      <div className="z-20">
+      <div className="z-20">
         {showModal && (
           <div>
-            <ModalProduct
-              product={product}
-              handleCloseModalProduct={handleCloseModalProduct}
+            <ModalEditAdmin
+              member={member}
+              handleCloseEditAdmin={handleCloseModalMember}
             />
           </div>
         )}
-      </div> */}
+      </div>
       <li
-        onClick={handleCloseModalMember}
+        onClick={handleShowModalMember}
         className="cursor-pointer flex items-center justify-between px-3 tablet:px-5 py-2 mx-2 rounded-lg  hover:scale-[101%] bg-bgPrimaryColor  shadow transition-all duration-200"
       >
         <div className="w-full">
@@ -48,4 +49,4 @@ function ProductTableBody({ member }) {
   );
 }
 
-export default ProductTableBody;
+export default TeamTableBody;
