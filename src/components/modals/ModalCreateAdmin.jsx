@@ -1,60 +1,66 @@
 import "../../animation/Animations.css";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { createAdmin } from "../../redux/teamReducer";
 
-function ModalCreateAdmin({ handleCloseModalAdmin }) {
+function ModalCreateAdmin({ handleCloseModalCreateAdmin }) {
+  const user = useSelector((state) => state.user);
+  const team = useSelector((state) => state.team);
+
   const dispatch = useDispatch();
   const [showMoreInfo, setShowMoreInfo] = useState(true);
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rolName, setRolName] = useState("");
-  const [rolLevel, setRolLevel] = useState("");
+  const [rol, setRol] = useState("");
+  const [nivel, setNivel] = useState("");
 
   /*   Close with ESC Function */
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      handleCloseModalAdmin();
+      handleCloseModalCreateAdmin();
     }
   });
 
-  const handleCreateClient = async () => {
+  const handleCreateAdmin = async () => {
     const response = await axios({
+      headers: {
+        Authorization: `Bearer ${user.admin.token}`,
+      },
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}/users`,
+      url: `${process.env.REACT_APP_API_URL}/admin`,
       data: {
         firstname,
         lastname,
         email,
         password,
-        rolName,
-        rolLevel,
+        rol,
+        nivel,
       },
     });
 
-    dispatch(createAdmin(response.data.user));
-    handleCloseModalAdmin();
+    dispatch(createAdmin(response.data));
+    handleCloseModalCreateAdmin();
   };
 
   const handleCloseModal = async () => {
-    handleCloseModalAdmin();
+    handleCloseModalCreateAdmin();
   };
-
+  console.log(team);
   return (
     <div className="fixed inset-0 bg-modal z-40">
       <div className="flex items-center justify-center min-h-screen text-center px-8 tablet:px-0">
         <div
           className="fixed inset-0 bg-[#0f0f0f7e] cursor-pointer fade-in-fast z-20"
-          onClick={handleCloseModalAdmin}
+          onClick={handleCloseModal}
         ></div>
 
         <div className="inline-block bg-bgPrimaryColor rounded-lg shadow-lg transform transition-all fade-in-fast duration-300 modal z-30 mt-12">
           <button
             className="absolute right-[-5px] top-[-5px] h-6 w-6 flex border justify-center border-bgSecondaryColor bg-bgPrimaryColor hover:bg-bgSecondaryColor rounded-full text-sm translate-all duration-150 font-bold hover:text-bgPrimaryColor"
-            onClick={handleCloseModalAdmin}
+            onClick={handleCloseModal}
           >
             X
           </button>
@@ -126,22 +132,22 @@ function ModalCreateAdmin({ handleCloseModalAdmin }) {
                       <label htmlFor="country">Rol Name</label>
                       <input
                         type="text"
-                        name="rolname"
-                        id="rolname"
-                        value={rolName}
+                        name="rol"
+                        id="rol"
+                        value={rol}
                         className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                        onChange={(e) => setRolName(e.target.value)}
+                        onChange={(e) => setRol(e.target.value)}
                       />
                     </div>
                     <div className="mt-5 mb-7 flex justify-between">
                       <label htmlFor="country">Rol Level</label>
                       <input
                         type="number"
-                        name="level"
-                        id="level"
-                        value={rolLevel}
+                        name="nivel"
+                        id="nivel"
+                        value={nivel}
                         className="rounded bg-bgForthColor ml-10 mr-2 py-1 px-1"
-                        onChange={(e) => setRolLevel(e.target.value)}
+                        onChange={(e) => setNivel(e.target.value)}
                       />
                     </div>
                   </div>
@@ -182,7 +188,7 @@ function ModalCreateAdmin({ handleCloseModalAdmin }) {
                   </button>
                 ) : (
                   <button
-                    onClick={handleCreateClient}
+                    onClick={handleCreateAdmin}
                     className="bg-bgFiftyColor gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
                   >
                     <img className="w-8" src="edit-icon.png" alt="" />

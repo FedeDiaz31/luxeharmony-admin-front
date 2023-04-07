@@ -1,15 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "../animation/Animations.css";
 import Spinner from "../components/partials/Spinner";
 import TeamTableBody from "../components/partials/TeamTableBody";
 import ModalCreateAdmin from "../components/modals/ModalCreateAdmin";
+import { addTeam } from "../redux/teamReducer";
 
 function Team() {
   document.title = ` LuxeHarmony | Teams `;
-
-  const [team, setTeam] = useState(null);
+  const dispatch = useDispatch();
+  const team = useSelector((state) => state.team);
   const user = useSelector((state) => state.user);
   const [showCreateModal, setShowCreateModal] = useState(false);
 
@@ -22,7 +23,7 @@ function Team() {
         method: "get",
         url: `${process.env.REACT_APP_API_URL}/admin`,
       });
-      setTeam(response.data);
+      dispatch(addTeam(response.data));
     };
     getTeam();
   }, []);
