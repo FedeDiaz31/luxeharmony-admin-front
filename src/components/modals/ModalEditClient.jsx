@@ -18,8 +18,6 @@ function ModalEditClient({ handleCloseModalClient, client, setClients }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showMoreInfo, setShowMoreInfo] = useState(true);
 
-  console.log(client);
-
   /*   Close with ESC Function */
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
