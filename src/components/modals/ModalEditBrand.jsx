@@ -2,12 +2,14 @@
 import "../../animation/Animations.css";
 /* Dependencias */
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { editBrand, deleteBrand } from "../../redux/brandsReducer";
 /* Componentes */
 import axios from "axios";
 
-function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
+function ModalEditBrand({ handleCloseModalBrand, brand }) {
   const user = useSelector((state) => state.user);
+  const dispactch = useDispatch();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleGoOut = () => {
@@ -30,7 +32,7 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
       url: `${process.env.REACT_APP_API_URL}/brands/${brand._id}`,
       data: formData,
     });
-    setBrands(response.data);
+    dispactch(editBrand(response.data));
     handleCloseModalBrand();
   };
 
@@ -42,9 +44,8 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
       method: "delete",
       url: `${process.env.REACT_APP_API_URL}/brands/${brand._id}`,
     });
-    setBrands(response.data);
+    dispactch(deleteBrand(response.data));
     handleCloseModalBrand();
-    console.log(response.data);
   };
 
   return (
@@ -72,13 +73,13 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
                   {/*                    Page Edit of Brand */}
                   <div className="flex justify-center gap-3 items-center">
                     <img
-                      className="w-12 h-10 z-0 object-contain "
+                      className="w-12 h-10 z-0 object-contain mr-10"
                       src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
                       alt="logo"
                     />
-                    <h4 className="font-semibold">{brand.name}</h4>
+                    <h4 className="font-semibold ml-10">{brand.name}</h4>
                   </div>
-                  <div className="mt-3">
+                  <div className="mt-3 flex justify-between">
                     <label htmlFor="name">Name</label>
                     <input
                       type="text"
@@ -113,11 +114,11 @@ function ModalEditBrand({ handleCloseModalBrand, brand, setBrands }) {
                   </div>
                 </div>
                 {showDeleteModal && (
-                  <div className="flex justify-between mt-3 p-2 rounded bg-bgSoftRedColor">
+                  <div className="flex justify-between items-center mt-3 p-2 rounded bg-bgSoftRedColor">
                     <p className="mr-10 text-textSecondary ">Are you sure?</p>
                     <button
                       onClick={() => setShowDeleteModal(false)}
-                      className="w-[17vh] bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
+                      className="w-[21vh]  bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
                     >
                       No, close modal
                     </button>{" "}

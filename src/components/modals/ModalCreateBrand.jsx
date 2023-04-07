@@ -1,5 +1,8 @@
 /* CSS */
 import "../../animation/Animations.css";
+/* Reducers */
+import { createBrand } from "../../redux/brandsReducer";
+
 /* Dependencias */
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,7 +19,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
   const [name, setName] = useState("");
   const [logo, setLogo] = useState("");
 
-  const handleEdit = async () => {
+  const handleCreate = async () => {
     const formData = new FormData();
     formData.append("logo", logo);
     formData.append("name", name);
@@ -30,7 +33,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
       url: `${process.env.REACT_APP_API_URL}/brands`,
       data: formData,
     });
-    setBrands(response.data);
+    dispatch(createBrand(response.data));
     handleCloseModalBrand();
   };
 
@@ -56,13 +59,13 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
               {/*                 Images Info of Product */}
 
               <div className="flex flex-col ml-10">
-                <h2 className="font-bold text-lg">Edit Brand</h2>
+                <h2 className="font-bold text-lg">Create a new brand</h2>
                 <div className="min-h-[250px] mt-5">
                   <div className="w-full fade-in">
                     {/*                    Page 1 Edit of Product */}
 
                     <div className="mt-5 flex justify-between">
-                      <label htmlFor="name">Edit name</label>
+                      <label htmlFor="name">Name</label>
                       <input
                         type="text"
                         name="name"
@@ -73,7 +76,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
                       />
                     </div>
                     <div className="mt-5 flex justify-between">
-                      <label htmlFor="name">Edit logo </label>
+                      <label htmlFor="name">Logo </label>
                       <input
                         type="file"
                         name="logo"
@@ -90,10 +93,10 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
                   <div className="flex justify-center mt-5">
                     <button
                       className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
-                      onClick={handleEdit}
+                      onClick={handleCreate}
                     >
                       <img className="w-8" src="edit-icon.png" alt="" />
-                      <h2 className="font-bold">Edit</h2>
+                      <h2 className="font-bold">Create</h2>
                     </button>
                   </div>
                 </div>
