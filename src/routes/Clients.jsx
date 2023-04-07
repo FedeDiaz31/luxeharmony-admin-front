@@ -83,14 +83,13 @@ function Users() {
             </button>
           </div>
         </div>
-
         {clients ? (
           <>
-            <ul className="mt-3 pb-4 grid gap-1">
+            {/*        <ul className="mt-3 pb-4 grid gap-1">
               {searchClients?.map((client, i) => {
                 return <ClientsTableBody key={i} client={client} />;
               })}
-            </ul>{" "}
+            </ul> */}
           </>
         ) : (
           <div className="w-full grid place-content-center h-[60vh]">
