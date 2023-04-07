@@ -87,7 +87,7 @@ function Users() {
         {clients ? (
           <>
             <ul className="mt-3 pb-4 grid gap-1">
-              {searchClients.map((client, i) => {
+              {searchClients?.map((client, i) => {
                 return <ClientsTableBody key={i} client={client} />;
               })}
             </ul>{" "}
