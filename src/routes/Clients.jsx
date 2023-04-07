@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../components/partials/Spinner";
 import ClientsTableBody from "../components/partials/ClientsTableBody";
-import ModalCreateClient from "../components/modals/ModalCreateClient";
+/* import ModalCreateClient from "../components/modals/ModalCreateClient"; */
 import { useSelector, useDispatch } from "react-redux";
 import { addClients } from "../redux/clientsReducer";
 
@@ -52,11 +52,11 @@ function Users() {
 
   return (
     <>
-      {showCreateClientModal && (
+      {/*  {showCreateClientModal && (
         <div>
           <ModalCreateClient handleCloseModalClient={handleCloseModalClient} />
         </div>
-      )}
+      )} */}
       <div className="p-5  fade-in">
         <div className="flex w-full justify-between items-center gap-3 px-10">
           <h3 className="font-semibold text-2xl">Clientes</h3>
