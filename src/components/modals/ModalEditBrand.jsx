@@ -73,11 +73,10 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
                   {/*                    Page Edit of Brand */}
                   <div className="flex justify-center gap-3 items-center">
                     <img
-                      className="w-12 h-10 z-0 object-contain mr-10"
+                      className="w-12 h-10 z-0 object-contain"
                       src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
                       alt="logo"
                     />
-                    <h4 className="font-semibold ml-10">{brand.name}</h4>
                   </div>
                   <div className="mt-3 flex justify-between">
                     <label htmlFor="name">Name</label>

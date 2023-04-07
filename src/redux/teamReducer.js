@@ -9,8 +9,11 @@ const teamSlice = createSlice({
     addTeam(state, action) {
       return action.payload;
     },
+    createAdmin(state, action) {
+      return [...state, action.payload]
+    },
   },
 });
 
-export const { addTeam } = teamSlice.actions;
+export const { addTeam, createAdmin } = teamSlice.actions;
 export default teamSlice.reducer;

@@ -58,13 +58,13 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
             <div className="flex text-white items-center p-5 px-10">
               {/*                 Images Info of Product */}
 
-              <div className="flex flex-col ml-10">
+              <div className="flex flex-col">
                 <h2 className="font-bold text-lg">Create a new brand</h2>
                 <div className="min-h-[250px] mt-5">
                   <div className="w-full fade-in">
                     {/*                    Page 1 Edit of Product */}
 
-                    <div className="mt-5 flex justify-between">
+                    <div className="mt-5 flex justify-between items-center">
                       <label htmlFor="name">Name</label>
                       <input
                         type="text"
@@ -75,7 +75,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
                         onChange={(e) => setName(e.target.value)}
                       />
                     </div>
-                    <div className="mt-5 flex justify-between">
+                    <div className="mt-5 flex justify-between items-center">
                       <label htmlFor="name">Logo </label>
                       <input
                         type="file"
