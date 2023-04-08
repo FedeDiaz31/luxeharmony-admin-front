@@ -22,7 +22,7 @@ function ClientTableBody({ client, setClients }) {
       </div>
 
       <li
-        className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200"
+        className="cursor-pointer flex items-center justify-between px-5 py-2 mx-0 tablet:mx-2  rounded hover:scale-[101%] bg-bgPrimaryColor shadow transition-all duration-200"
         onClick={handleShowModalClient}
       >
         <div className="w-full">

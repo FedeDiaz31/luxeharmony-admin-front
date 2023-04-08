@@ -20,7 +20,7 @@ function BrandTableBody({ brand, setBrands }) {
       </div>
       <li
         onClick={handleShowModalBrand}
-        className="cursor-pointer flex items-center justify-between px-5 py-2 mx-2 rounded-lg  hover:scale-[101%] bg-bgPrimaryColor  shadow transition-all duration-200"
+        className="cursor-pointer flex items-center justify-between px-5 py-2 mx-0 tablet:mx-2  rounded-lg  hover:scale-[101%] bg-bgPrimaryColor  shadow transition-all duration-200"
       >
         <div className="w-8/12">
           <img

@@ -21,7 +21,7 @@ function TeamTableBody({ member }) {
       </div>
       <li
         onClick={handleShowModalMember}
-        className="cursor-pointer flex items-center justify-between px-3 tablet:px-5 py-2 mx-2 rounded-lg  hover:scale-[101%] bg-bgPrimaryColor  shadow transition-all duration-200"
+        className="cursor-pointer flex items-center justify-between px-3 tablet:px-5 py-2 mx-0 tablet:mx-2 rounded-lg  hover:scale-[101%] bg-bgPrimaryColor  shadow transition-all duration-200"
       >
         <div className="w-full">
           <h3 className="font-semibold">
