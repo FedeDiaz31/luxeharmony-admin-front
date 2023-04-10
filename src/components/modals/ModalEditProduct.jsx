@@ -3,7 +3,7 @@ import "../../animation/Animations.css";
 /* Dependencias */
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { editProduct } from "../../redux/productsReducer";
+import { editProduct, deleteProduct } from "../../redux/productsReducer";
 /* Componentes */
 import Spinner from "../partials/Spinner";
 import axios from "axios";
@@ -12,7 +12,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [brands, setBrands] = useState(null);
-
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showImage, setShowImage] = useState(product.image[0]);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [brandName, setBrandName] = useState(product.brand.name);
@@ -65,6 +65,19 @@ function ModalProduct({ handleCloseModalProduct, product }) {
     });
     handleCloseModalProduct();
     dispatch(editProduct(response.data));
+  };
+
+  const handleDelete = async () => {
+    const response = await axios({
+      headers: {
+        Authorization: `Bearer ${user.admin.token}`,
+      },
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}/products/${product._id}`,
+    });
+    dispatch(deleteProduct(response.data));
+    setShowDeleteModal(false);
+    handleCloseModalProduct();
   };
 
   return (
@@ -344,13 +357,39 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                       2
                     </button>
                   </div>
-                  <button
-                    onClick={handleEditProduct}
-                    className="mt-4 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
-                  >
-                    <img className="w-6" src="edit-icon.png" alt="" />
-                    <h2 className="font-bold">Edit</h2>
-                  </button>
+                  <div className="flex">
+                    <button
+                      onClick={handleEditProduct}
+                      className="mt-4 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                    >
+                      <img className="w-6" src="edit-icon.png" alt="" />
+                      <h2 className="font-bold">Edit</h2>
+                    </button>
+                    <button
+                      onClick={() => setShowDeleteModal(true)}
+                      className="mt-4 ml-2 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                    >
+                      <img className="w-5" src="delete-icon.png" alt="" />
+                      <h2 className="font-bold">Delete</h2>
+                    </button>
+                  </div>
+                  {showDeleteModal && (
+                    <div className="flex justify-between items-center mt-3 mb-3 p-2 rounded bg-bgSoftRedColor">
+                      <p className="mr-10 text-textSecondary ">Are you sure?</p>
+                      <button
+                        onClick={() => setShowDeleteModal(false)}
+                        className="w-[21vh]  bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
+                      >
+                        No, close modal
+                      </button>{" "}
+                      <button
+                        onClick={handleDelete}
+                        className="w-[17vh] ml-2 bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
+                      >
+                        Yes, Im sure
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </form>

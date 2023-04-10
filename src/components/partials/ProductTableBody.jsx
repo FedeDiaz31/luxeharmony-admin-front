@@ -5,6 +5,7 @@ function ProductTableBody({ product }) {
   const [showModal, setShowModal] = useState(false);
   const handleCloseModalProduct = () => setShowModal(false);
   const handleShowModalProduct = () => setShowModal(true);
+
   return (
     <>
       <div className="z-20">
