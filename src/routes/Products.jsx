@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProducts } from "../redux/productsReducer";
 import { addBrands } from "../redux/brandsReducer";
 import { addCategories } from "../redux/categoriesReducer";
-
 //CSS
 import "../animation/Animations.css";
 //Components
@@ -170,7 +169,6 @@ function Products() {
             ""
           )}
         </div>
-
         {/*        Filtro Categorias */}
         {filterSelected === "categories" && (
           <div className="px-5 tablet:px-14 z-[0] relative my-5 fade-in grid">
@@ -198,7 +196,6 @@ function Products() {
             )}
           </div>
         )}
-
         {/*        Filtro Marcas */}
         {filterSelected === "brands" && (
           <div className="px-5 tablet:px-14 z-[0] relative my-8 fade-in">
@@ -218,27 +215,13 @@ function Products() {
                         "bg-bgSecondaryColor text-textPrimary rounded"
                       } cursor-pointer text-center text-lg tablet:px-3 font-semibold transition-all duration-200`}
                     >
-                      {brand.name === brandFilter ? (
-                        <img
-                          className="w-10 tablet:w-24 my-1 object-contain"
-                          src={
-                            brand.logo.includes("http")
-                              ? brand.logo
-                              : `${process.env.REACT_APP_API_URL}/img/${brand.logo}`
-                          }
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          className="w-10 tablet:w-24 my-1 object-contain"
-                          src={
-                            brand.logo2.includes("http")
-                              ? brand.logo2
-                              : `${process.env.REACT_APP_API_URL}/img/${brand.logo2}`
-                          }
-                          alt=""
-                        />
-                      )}
+                      <img
+                        className={`${
+                          brand.name === brandFilter ? "invert" : ""
+                        } w-10 tablet:w-24 my-1 object-contain`}
+                        src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${brand.logo2}`}
+                        alt=""
+                      />
                     </div>
                   );
                 })}

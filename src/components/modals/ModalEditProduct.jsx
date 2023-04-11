@@ -112,11 +112,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
               <div className="hidden laptop:block">
                 <img
                   className="hidden h-[290px] mix-blend-multiply tablet:flex w-64 desktop:w-80 object-contain rounded-l mb-4"
-                  src={
-                    showImage.includes("http")
-                      ? showImage
-                      : `${process.env.REACT_APP_API_URL}/img/products/${showImage}`
-                  }
+                  src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${showImage}`}
                   alt=""
                 />
                 <div className="flex justify-center gap-2 items-center">
@@ -130,11 +126,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                         key={i}
                         onClick={() => setShowImage(image)}
                         className="w-14 mix-blend-multiply h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
-                        src={
-                          image.includes("http")
-                            ? image
-                            : `${process.env.REACT_APP_API_URL}/img/products/${image}`
-                        }
+                        src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${image}`}
                       />
                     );
                   })}
@@ -316,11 +308,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                                 key={i}
                                 onClick={() => setShowImage(image)}
                                 className="w-10 tablet:w-14 mix-blend-multiply h-10 tablet:h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
-                                src={
-                                  image.includes("http")
-                                    ? image
-                                    : `${process.env.REACT_APP_API_URL}/img/products/${image}`
-                                }
+                                src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${image}`}
                               />
                             );
                           })}

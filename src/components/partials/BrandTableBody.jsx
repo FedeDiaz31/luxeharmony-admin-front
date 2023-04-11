@@ -25,7 +25,7 @@ function BrandTableBody({ brand, setBrands }) {
         <div className="w-8/12">
           <img
             className="w-12 z-0"
-            src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
+            src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${brand.logo2}`}
           />
         </div>
         <div className="hidden tablet:inline w-full text-center">
