@@ -17,12 +17,13 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
     handleCloseModalBrand();
   };
   const [name, setName] = useState("");
-  const [logo, setLogo] = useState("");
+  const [logo, setLogo] = useState(null);
 
   const handleCreate = async () => {
     const formData = new FormData();
     formData.append("logo", logo);
     formData.append("name", name);
+    console.log(formData);
 
     const response = await axios({
       headers: {
@@ -39,7 +40,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
 
   return (
     <>
-      <div className="fixed inset-0 bg-modal z-40">
+      <form onSubmit={handleCreate} className="fixed inset-0 bg-modal z-40">
         <div className="flex items-center justify-center min-h-screen text-center px-8 tablet:px-0">
           <div
             className="fixed inset-0 bg-[#0f0f0f7e] cursor-pointer fade-in-fast z-20"
@@ -93,7 +94,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
                   <div className="flex justify-center mt-5">
                     <button
                       className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
-                      onClick={handleCreate}
+                      type="submit"
                     >
                       <img className="w-8" src="edit-icon.png" alt="" />
                       <h2 className="font-bold">Create</h2>
@@ -104,7 +105,7 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 }
