@@ -52,17 +52,9 @@ function ModalProduct({ handleCloseModalProduct }) {
     getCategories();
   }, []);
 
-  const handleCreateProduct = async () => {
-    const formData = new FormData();
-    formData.append("brand", brandName);
-    formData.append("model", model);
-    formData.append("subtitle", subtitle);
-    formData.append("category", category);
-    formData.append("price", price);
-    formData.append("stock", stock);
-    formData.append("slug", slug);
-    formData.append("description", description);
-
+  const handleCreateProduct = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
     const response = await axios({
       headers: {
         "Content-Type": "multipart/form-data",
@@ -73,7 +65,6 @@ function ModalProduct({ handleCloseModalProduct }) {
       data: formData,
     });
     dispatch(createProduct(response.data));
-    console.log(response.data);
     handleCloseModalProduct();
   };
 
