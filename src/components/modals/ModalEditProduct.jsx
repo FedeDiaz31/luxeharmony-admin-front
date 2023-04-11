@@ -380,13 +380,13 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                         onClick={() => setShowDeleteModal(false)}
                         className="w-[21vh]  bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgBlueColor hover:text-textPrimary"
                       >
-                        No, close modal
+                        No
                       </button>{" "}
                       <button
                         onClick={handleDelete}
                         className="w-[17vh] ml-2 bg-bgFiftyColor text-textSecondary rounded transition-all duration-200 hover:bg-bgRedColor hover:text-textPrimary"
                       >
-                        Yes, Im sure
+                        Yes
                       </button>
                     </div>
                   )}
