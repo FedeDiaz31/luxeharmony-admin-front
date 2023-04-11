@@ -93,7 +93,7 @@ function Products() {
   }, [categoryFilter]);
 
   /////////////////////
-
+  console.log(products);
   return (
     <>
       {showModal && (
