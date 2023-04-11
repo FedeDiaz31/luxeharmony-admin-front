@@ -69,7 +69,7 @@ function Products() {
     const getProducts = async () => {
       const brand = brandFilter;
       const response = await axios({
-        url: `${process.env.REACT_APP_API_URL}/products`,
+        url: `${process.env.REACT_APP_API_URL}/products/filter`,
         data: { brand },
         method: "post",
       });
@@ -83,7 +83,7 @@ function Products() {
     const getProducts = async () => {
       const category = categoryFilter;
       const response = await axios({
-        url: `${process.env.REACT_APP_API_URL}/products`,
+        url: `${process.env.REACT_APP_API_URL}/products/filter`,
         data: { category },
         method: "post",
       });
@@ -92,8 +92,6 @@ function Products() {
     getProducts();
   }, [categoryFilter]);
 
-  /////////////////////
-  console.log(products);
   return (
     <>
       {showModal && (
