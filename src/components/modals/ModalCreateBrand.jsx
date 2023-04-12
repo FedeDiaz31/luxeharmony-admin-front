@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 /* Componentes */
 import axios from "axios";
 
-function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
+function ModalCreateBrand({ handleCloseModalBrand }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -19,7 +19,8 @@ function ModalCreateBrand({ handleCloseModalBrand, setBrands }) {
   const [name, setName] = useState("");
   const [logo, setLogo] = useState(null);
 
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
     formData.append("logo", logo);
     formData.append("name", name);

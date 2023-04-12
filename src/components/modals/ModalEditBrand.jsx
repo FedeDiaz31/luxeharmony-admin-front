@@ -66,7 +66,10 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
             </button>
             {/*             Form Edit Brand */}
 
-            <div className="flex flex-col py-3 px-5">
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="flex flex-col py-3 px-5"
+            >
               <h2 className="font-bold text-lg">Edit Brand</h2>
               <div className="min-h-[250px] mt-3">
                 <div className="fade-in">
@@ -74,9 +77,10 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
                   <div className="flex justify-center gap-3 items-center">
                     <img
                       className="w-12 h-10 z-0 object-contain"
-                      src={`${process.env.REACT_APP_API_URL}/img/${brand.logo2}`}
+                      src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${brand.logo2}`}
                       alt="logo"
                     />
+                    <h5 className="font-bold">{brand.name}</h5>
                   </div>
                   <div className="mt-3 flex justify-between">
                     <label htmlFor="name">Name</label>
@@ -102,14 +106,26 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
                       multiple
                     />
                   </div>
-                  <div className="flex mt-10 flex-col items-center">
-                    <p className="mr-5">Do you want to delete this brand?</p>
-                    <button
-                      onClick={() => setShowDeleteModal(true)}
-                      className="bg-bgSecondaryColor w-[150px] text-textPrimary mt-2 rounded transition-all duration-200 hover:bg-bgPrimaryColor hover:text-textSecondary"
-                    >
-                      Delete
-                    </button>
+                  <div className="flex justify-center">
+                    <div className="flex mt-5 flex-col items-center">
+                      <button
+                        onClick={handleEdit}
+                        className="mt-4 w-[14vh] mr-5 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                      >
+                        <img className="w-5" src="edit-icon.png" alt="" />
+                        <h2 className="font-bold">Edit</h2>
+                      </button>
+                    </div>
+
+                    <div className="flex mt-5 flex-col items-center">
+                      <button
+                        onClick={() => setShowDeleteModal(true)}
+                        className="mt-4 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                      >
+                        <img className="w-5" src="delete-icon.png" alt="" />
+                        <h2 className="font-bold">Delete</h2>
+                      </button>
+                    </div>
                   </div>
                 </div>
                 {showDeleteModal && (
@@ -129,18 +145,8 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
                     </button>
                   </div>
                 )}
-
-                <div className="flex justify-center mt-5">
-                  <button
-                    className="mt-3 gap-2 flex items-center rounded p-2 pl-3 pr-4 hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
-                    onClick={handleEdit}
-                  >
-                    <img className="w-8" src="edit-icon.png" alt="" />
-                    <h2 className="font-bold">Edit</h2>
-                  </button>
-                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
