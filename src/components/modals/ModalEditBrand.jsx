@@ -16,11 +16,11 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
     handleCloseModalBrand();
   };
   const [name, setName] = useState(brand.name);
-  const [logo, setLogo] = useState(brand.logo);
+  const [logo2, setLogo2] = useState(brand.logo2);
 
   const handleEdit = async () => {
     const formData = new FormData();
-    formData.append("logo", logo);
+    formData.append("logo2", logo2);
     formData.append("name", name);
 
     const response = await axios({
@@ -97,11 +97,11 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
                     <label htmlFor="name">Logo</label>
                     <input
                       type="file"
-                      name="logo"
-                      id="logo"
+                      name="logo2"
+                      id="logo2"
                       className="rounded bg-bgForthColor ml-3 py-1 px-1"
                       onChange={(e) => {
-                        setLogo(e.target.files[0]);
+                        setLogo2(e.target.files[0]);
                       }}
                       multiple
                     />

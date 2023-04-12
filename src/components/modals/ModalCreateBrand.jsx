@@ -17,12 +17,14 @@ function ModalCreateBrand({ handleCloseModalBrand }) {
     handleCloseModalBrand();
   };
   const [name, setName] = useState("");
-  const [logo, setLogo] = useState(null);
+  const [logo1, setLogo1] = useState(null);
+  const [logo2, setLogo2] = useState(null);
 
   const handleCreate = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("logo", logo);
+    formData.append("logo1", logo1);
+    formData.append("logo2", logo2);
     formData.append("name", name);
     console.log(formData);
 
@@ -78,14 +80,28 @@ function ModalCreateBrand({ handleCloseModalBrand }) {
                       />
                     </div>
                     <div className="mt-5 flex justify-between items-center">
-                      <label htmlFor="name">Logo </label>
+                      <label htmlFor="name">White Logo </label>
                       <input
                         type="file"
-                        name="logo"
-                        id="logo"
+                        name="logo1"
+                        id="logo1"
                         className="rounded bg-bgForthColor ml-11 mr-2 py-1 px-1"
                         onChange={(e) => {
-                          setLogo(e.target.files[0]);
+                          setLogo1(e.target.files[0]);
+                        }}
+                        multiple
+                      />
+                    </div>
+
+                    <div className="mt-5 flex justify-between items-center">
+                      <label htmlFor="name">Black Logo </label>
+                      <input
+                        type="file"
+                        name="logo2"
+                        id="logo2"
+                        className="rounded bg-bgForthColor ml-11 mr-2 py-1 px-1"
+                        onChange={(e) => {
+                          setLogo2(e.target.files[0]);
                         }}
                         multiple
                       />
