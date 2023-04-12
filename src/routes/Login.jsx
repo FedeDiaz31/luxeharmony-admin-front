@@ -24,12 +24,12 @@ function Login() {
   };
 
   return (
-    <div className="w-screen h-screen grid place-content-center bg-bgPrimaryColor">
-      <div className="bg-bgSecondaryColor p-10 rounded">
+    <div className="w-screen h-screen grid place-content-center bg-bgSecondaryColor">
+      <div className="bg-bgSecondaryColor p-10 rounded z-50 border border-bgPrimaryColor">
         <div className="flex justify-center mb-5">
           <img
             className="w-32 transition-all duration-200"
-            src="LOGO-WHITE-LUXE-HARMONY.png"
+            src="LOGO-WHITE-LUXE-HARMONY2.png"
             alt=""
           />
         </div>
@@ -60,6 +60,11 @@ function Login() {
           </button>
         </form>
       </div>
+      <img
+        className="absolute w-full h-[100vh] object-cover z-0 opacity-75"
+        src="https://rare-gallery.com/uploads/posts/128434-guitars-colorful-hd.jpg"
+        alt="bg"
+      />
     </div>
   );
 }
