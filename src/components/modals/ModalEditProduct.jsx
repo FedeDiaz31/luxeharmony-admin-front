@@ -8,7 +8,7 @@ import { editProduct, deleteProduct } from "../../redux/productsReducer";
 import Spinner from "../partials/Spinner";
 import axios from "axios";
 
-function ModalProduct({ handleCloseModalProduct, product }) {
+function ModalEditProduct({ handleCloseModalProduct, product }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [brands, setBrands] = useState(null);
@@ -17,6 +17,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [brandName, setBrandName] = useState(product.brand.name);
   const oldBrand = product.brand.name;
+  const [images, setImages] = useState([]);
   const [model, setModel] = useState(product.model);
   const [subtitle, setSubtitle] = useState(product.subtitle);
   const [price, setPrice] = useState(product.price);
@@ -45,6 +46,7 @@ function ModalProduct({ handleCloseModalProduct, product }) {
   /*   PATCH PRODUCT */
   const handleEditProduct = async () => {
     const formData = new FormData();
+
     formData.append("brand", brandName);
     formData.append("model", model);
     formData.append("subtitle", subtitle);
@@ -54,6 +56,9 @@ function ModalProduct({ handleCloseModalProduct, product }) {
     formData.append("slug", slug);
     formData.append("product", product._id);
     formData.append("oldBrand", oldBrand);
+    for (let i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
     const response = await axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}/products/${slug}`,
@@ -116,13 +121,12 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                   alt=""
                 />
                 <div className="flex justify-center gap-2 items-center">
-                  {product.image.map((image, i) => {
-                    return !image ? (
-                      <div key={i} className="flex justify-center">
-                        <Spinner />
-                      </div>
-                    ) : (
-                      <div className="grid relative gap-2 justify-center">
+                  {product.image?.map((image, i) => {
+                    return (
+                      <div
+                        key={i}
+                        className="grid relative gap-2 justify-center"
+                      >
                         <div className="">
                           <img
                             key={i}
@@ -139,9 +143,22 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                       </div>
                     );
                   })}
-                  <button className="ml-2 bg-bgForthColor text-bgSecondaryColor px-3 h-8 rounded text-lg font-semibold">
-                    +
-                  </button>
+                  <div className="grid items-center">
+                    <input
+                      onChange={(e) => setImages(e.target.files)}
+                      multiple
+                      className="absolute cursor-pointer ml-1 opacity-0 w-[40px]"
+                      type="file"
+                      name="images"
+                      id="images"
+                    />
+                    <button className="ml-2 bg-bgForthColor text-bgSecondaryColor px-3 h-8 rounded text-lg font-semibold">
+                      +
+                    </button>
+                    <h3 className="ml-2">
+                      {images.length !== 0 && images.length}
+                    </h3>
+                  </div>
                 </div>
               </div>
               {/*             FORM EDIT PRODUCT */}
@@ -397,4 +414,4 @@ function ModalProduct({ handleCloseModalProduct, product }) {
   );
 }
 
-export default ModalProduct;
+export default ModalEditProduct;
