@@ -75,12 +75,6 @@ function Users() {
                 <img className="w-4" src="search-icon.png" alt="" />
               </button>
             </div>
-            <button
-              onClick={() => setShowCreateClientModal(true)}
-              className="bg-bgSecondaryColor text-textPrimary px-3 h-8 rounded text-lg font-semibold"
-            >
-              +
-            </button>
           </div>
         </div>
         {clients ? (

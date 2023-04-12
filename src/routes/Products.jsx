@@ -160,10 +160,6 @@ function Products() {
                   Borrar filtro
                 </button>
               </div>
-              <h3 className="ml-3 bg-bgSecondaryColor text-textPrimary rounded px-2">
-                [ {categoryFilter} {categoryFilter && brandFilter && "&"}{" "}
-                {brandFilter} ]
-              </h3>
             </div>
           ) : (
             ""

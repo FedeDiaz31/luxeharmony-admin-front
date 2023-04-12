@@ -12,7 +12,6 @@ function ModalProduct({ handleCloseModalProduct }) {
   const user = useSelector((state) => state.user);
   const [brands, setBrands] = useState(null);
   const [categories, setCategories] = useState(null);
-  const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [brandName, setBrandName] = useState("");
   const [model, setModel] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -51,7 +50,7 @@ function ModalProduct({ handleCloseModalProduct }) {
 
   const handleCreateProduct = async (e) => {
     e.preventDefault();
-    console.log("llego");
+
     const formData = new FormData();
     formData.append("brand", brandName);
     formData.append("model", model);
@@ -61,6 +60,8 @@ function ModalProduct({ handleCloseModalProduct }) {
     formData.append("stock", stock);
     formData.append("description", description);
     formData.append("image", image);
+
+    console.log(formData);
 
     const response = await axios({
       headers: {

@@ -118,16 +118,25 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                 <div className="flex justify-center gap-2 items-center">
                   {product.image.map((image, i) => {
                     return !image ? (
-                      <div className="flex justify-center">
+                      <div key={i} className="flex justify-center">
                         <Spinner />
                       </div>
                     ) : (
-                      <img
-                        key={i}
-                        onClick={() => setShowImage(image)}
-                        className="w-14 mix-blend-multiply h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
-                        src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${image}`}
-                      />
+                      <div className="grid relative gap-2 justify-center">
+                        <div className="">
+                          <img
+                            key={i}
+                            onClick={() => setShowImage(image)}
+                            className="bg-bgPrimaryColor z-50 w-14 mix-blend-multiply h-14 object-contain cursor-pointer border rounded p-1 fade-in-fast"
+                            src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${image}`}
+                          />
+                        </div>
+                        <button className="top-[-3px] left-[-3px] absolute">
+                          <div className="p-1 rounded bg-bgForthColor z-10  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary">
+                            <img className="w-3" src="delete-icon.png" alt="" />
+                          </div>
+                        </button>
+                      </div>
                     );
                   })}
                   <button className="ml-2 bg-bgForthColor text-bgSecondaryColor px-3 h-8 rounded text-lg font-semibold">
@@ -345,17 +354,17 @@ function ModalProduct({ handleCloseModalProduct, product }) {
                       2
                     </button>
                   </div>
-                  <div className="flex">
+                  <div className="flex justify-center gap-3">
                     <button
                       onClick={handleEditProduct}
-                      className="mt-4 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                      className="mt-4 gap-2 flex items-center rounded p-2 pl-5 pr-6 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
                     >
                       <img className="w-6" src="edit-icon.png" alt="" />
                       <h2 className="font-bold">Edit</h2>
                     </button>
                     <button
                       onClick={() => setShowDeleteModal(true)}
-                      className="mt-4 ml-2 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
+                      className="mt-4 gap-2 flex items-center rounded p-2 pl-3 pr-4 bg-bgForthColor  hover:bg-bgSecondaryColor transition-all duration-200 hover:text-textPrimary"
                     >
                       <img className="w-5" src="delete-icon.png" alt="" />
                       <h2 className="font-bold">Delete</h2>
