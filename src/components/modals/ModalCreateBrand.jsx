@@ -90,6 +90,7 @@ function ModalCreateBrand({ handleCloseModalBrand }) {
                           setLogo1(e.target.files[0]);
                         }}
                         multiple
+                        required
                       />
                     </div>
 
@@ -104,6 +105,7 @@ function ModalCreateBrand({ handleCloseModalBrand }) {
                           setLogo2(e.target.files[0]);
                         }}
                         multiple
+                        required
                       />
                     </div>
                   </div>

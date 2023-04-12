@@ -16,10 +16,12 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
     handleCloseModalBrand();
   };
   const [name, setName] = useState(brand.name);
+  const [logo1, setLogo1] = useState(brand.logo1);
   const [logo2, setLogo2] = useState(brand.logo2);
 
   const handleEdit = async () => {
     const formData = new FormData();
+    formData.append("logo1", logo1);
     formData.append("logo2", logo2);
     formData.append("name", name);
 
@@ -94,7 +96,21 @@ function ModalEditBrand({ handleCloseModalBrand, brand }) {
                     />
                   </div>
                   <div className="mt-5">
-                    <label htmlFor="name">Logo</label>
+                    <label htmlFor="name">White Logo</label>
+                    <input
+                      type="file"
+                      name="logo1"
+                      id="logo1"
+                      className="rounded bg-bgForthColor ml-3 py-1 px-1"
+                      onChange={(e) => {
+                        setLogo1(e.target.files[0]);
+                      }}
+                      multiple
+                    />
+                  </div>
+
+                  <div className="mt-5">
+                    <label htmlFor="name">Black Logo</label>
                     <input
                       type="file"
                       name="logo2"
