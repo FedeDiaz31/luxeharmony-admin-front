@@ -61,8 +61,6 @@ function ModalProduct({ handleCloseModalProduct }) {
     formData.append("description", description);
     formData.append("image", image);
 
-    console.log(formData);
-
     const response = await axios({
       headers: {
         "Content-Type": "multipart/form-data",
@@ -92,9 +90,9 @@ function ModalProduct({ handleCloseModalProduct }) {
             X
           </button>
           {/*             Form Edit Product */}
-          <div className="flex text-white items-center p-5 px-10">
+          <div className="flex text-white items-center py-4  px-10">
             <form onSubmit={handleCreateProduct}>
-              <h2 className="font-bold text-lg">Add Product</h2>
+              <h2 className="font-bold pb-2 text-lg">Add Product</h2>
               <div className="slide-top w-60 tablet:w-80">
                 <div className="flex gap-3">
                   {/*               Add Brand */}
@@ -111,6 +109,9 @@ function ModalProduct({ handleCloseModalProduct }) {
                         id="brand"
                         value={brandName}
                       >
+                        <option selected value="none">
+                          Select brand
+                        </option>
                         {brands
                           ? brands.map((brand) => {
                               return (
@@ -140,6 +141,9 @@ function ModalProduct({ handleCloseModalProduct }) {
                         id="category"
                         value={category}
                       >
+                        <option selected value="none">
+                          Select category
+                        </option>
                         {categories &&
                           categories.map((category) => {
                             return (
