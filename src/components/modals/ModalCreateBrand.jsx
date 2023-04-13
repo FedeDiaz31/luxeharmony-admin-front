@@ -26,7 +26,6 @@ function ModalCreateBrand({ handleCloseModalBrand }) {
     formData.append("logo1", logo1);
     formData.append("logo2", logo2);
     formData.append("name", name);
-    console.log(formData);
 
     const response = await axios({
       headers: {

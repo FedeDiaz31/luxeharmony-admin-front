@@ -43,8 +43,6 @@ function ModalEditProduct({ handleCloseModalProduct, product }) {
     getBrands();
   }, []);
 
-  console.log(images);
-
   /*   PATCH PRODUCT */
   const handleEditProduct = async () => {
     const formData = new FormData();

@@ -10,7 +10,6 @@ const clientsSlice = createSlice({
       return action.payload;
     },
     editClient(state, action) {
-      console.log(action.payload);
       return state.map((client) => {
         if (client._id === action.payload._id) {
           return action.payload;
