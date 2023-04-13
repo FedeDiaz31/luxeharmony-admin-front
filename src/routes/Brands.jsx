@@ -70,12 +70,7 @@ function Brands() {
         {brands ? (
           <ul className="mt-3 grid gap-1 rounded-lg pb-4">
             {brands.map((brand, i) => {
-              return (
-                <BrandTableBody
-                  key={i}
-                  brand={brand} /* setBrands={setBrands} */
-                />
-              );
+              return <BrandTableBody key={i} brand={brand} />;
             })}
           </ul>
         ) : (
