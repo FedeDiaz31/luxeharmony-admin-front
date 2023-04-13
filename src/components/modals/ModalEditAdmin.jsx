@@ -204,8 +204,8 @@ function ModalEditAdmin({ handleCloseEditAdmin, member }) {
                 <button
                   className={
                     showMoreInfo
-                      ? "bg-bgForthColor text-textSecondary px-8 rounded  transition-all duration-200"
-                      : "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                      ? "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
+                      : "bg-bgForthColor text-textSecondary px-8 rounded transition-all duration-200"
                   }
                   onClick={() => setShowMoreInfo(true)}
                 >
@@ -214,8 +214,8 @@ function ModalEditAdmin({ handleCloseEditAdmin, member }) {
                 <button
                   className={
                     showMoreInfo
-                      ? "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
-                      : "bg-bgForthColor text-textSecondary px-8 rounded transition-all duration-200"
+                      ? "bg-bgForthColor text-textSecondary px-8 rounded  transition-all duration-200"
+                      : "bg-bgSecondaryColor text-textPrimary px-8 rounded transition-all duration-200"
                   }
                   onClick={() => setShowMoreInfo(false)}
                 >

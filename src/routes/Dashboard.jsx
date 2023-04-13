@@ -10,6 +10,7 @@ import Spinner from "../components/partials/Spinner";
 function Dashboard() {
   const dispatch = useDispatch();
   const orders = useSelector((state) => state.orders);
+  let montlySales = 0;
 
   const user = useSelector((state) => state.user);
   document.title = ` Dashborad - LuxeHarmony `;
@@ -30,6 +31,10 @@ function Dashboard() {
 
   const lastOrders = orders.slice(0, 10);
 
+  for (let order of lastOrders) {
+    montlySales += order.totalPrice;
+  }
+
   return (
     <div className="p-5 fade-in px-5 tablet:px-10">
       <div className="">
@@ -38,7 +43,10 @@ function Dashboard() {
       <div className="mt-5">
         <h4 className="my-5 tablet:ml-10 font-semibold">Last 30 days</h4>
         <div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 gap-3 ">
-          <CardDashboard title={"Montly Sales"} value={"450.980"} />
+          <CardDashboard
+            title={"Last 10 Sales"}
+            value={`U$D ${montlySales.toFixed(1)}`}
+          />
           <CardDashboard title={"Conversion Rate"} value={"96.12%"} />
           <CardDashboard title={"Avg. Click Rate"} value={"24.53%"} />
         </div>

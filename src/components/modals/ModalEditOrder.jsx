@@ -58,31 +58,52 @@ function ModalEditOrder({ handleCloseModalOrder, order }) {
           >
             X
           </button>
-          {/*             Form Edit Product */}
+          {/*             Form Edit Order */}
           <div className="flex text-white items-center p-5 px-10">
-            {/*                 Images Info of Product */}
-
             <div className="flex flex-col">
               <h2 className="font-bold text-lg">Order</h2>
               <h3 className="text-sm font-light">ID: {order._id}</h3>
               <div className="">
                 <div className="slide-top">
-                  {/*                     Page 2 Edit of Product */}
+                  <div className="w-full text-start mt-5 grid gap-1">
+                    <label htmlFor="products">List of Products:</label>
+                    <div>
+                      {order.products.map((details, i) => {
+                        return (
+                          <div
+                            key={i}
+                            className="flex items-center gap-1 font-normal text-sm"
+                          >
+                            <h3>{i + 1} -</h3>
+                            <h2>{details.product.model}</h2>
+                            <h3>({details.quantity}u)</h3>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                   <div className="mt-5">
-                    <label htmlFor="name">Status</label>
+                    <label htmlFor="status">Status</label>
                     <select
                       type="text"
-                      name="name"
-                      id="name"
+                      name="status"
+                      id="status"
                       className="rounded bg-bgForthColor min-w-[150px] ml-3 py-1 px-1"
                       onChange={(e) => setIdStatus(e.target.value)}
                     >
+                      <option selected value={order.status._id}>
+                        {order.status.name}
+                      </option>
                       {status?.map((st) => {
-                        return (
-                          <option key={st._id} value={st._id}>
-                            {st.name}
-                          </option>
-                        );
+                        if (st.name === order.status.name) {
+                          return null;
+                        } else {
+                          return (
+                            <option key={st._id} value={st._id}>
+                              {st.name}
+                            </option>
+                          );
+                        }
                       })}
                     </select>
                   </div>

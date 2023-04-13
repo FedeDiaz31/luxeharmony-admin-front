@@ -24,7 +24,7 @@ function ProductTableBody({ product }) {
       >
         <div className="w-8/12">
           <img
-            className="w-6 rotate-12 z-0"
+            className="w-10 h-10 object-contain rotate-12 z-0"
             src={`${process.env.REACT_APP_SUPABASE_BUCKET}/${product.image[0]}`}
           />
         </div>
@@ -32,7 +32,9 @@ function ProductTableBody({ product }) {
           <h3 className="font-semibold">{product.brand.name}</h3>
         </div>
         <div className="w-full">
-          <h3 className="font-semibold hidden tablet:block">{product.model}</h3>
+          <h3 className="font-semibold hidden w-[200px] tablet:block truncate">
+            {product.model}
+          </h3>
         </div>
         <div className="w-full text-end">
           <h3 className="text-textTertiary text-sm">USD {product.price}</h3>
