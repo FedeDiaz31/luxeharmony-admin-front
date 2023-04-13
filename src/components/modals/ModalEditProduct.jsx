@@ -61,7 +61,7 @@ function ModalEditProduct({ handleCloseModalProduct, product }) {
     }
     const response = await axios({
       method: "patch",
-      url: `${process.env.REACT_APP_API_URL}/products/${slug}`,
+      url: `${process.env.REACT_APP_API_URL}/products/${slug}?action=delete`,
       data: formData,
       headers: {
         Authorization: `Bearer ${user.admin.token}`,
@@ -145,7 +145,9 @@ function ModalEditProduct({ handleCloseModalProduct, product }) {
                   })}
                   <div className="grid items-center">
                     <input
-                      onChange={(e) => setImages(e.target.files)}
+                      onChange={(e) => {
+                        setImages(e.target.files);
+                      }}
                       multiple
                       className="absolute cursor-pointer ml-1 opacity-0 w-[40px]"
                       type="file"
