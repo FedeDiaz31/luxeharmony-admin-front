@@ -34,7 +34,7 @@ function Dashboard() {
   for (let order of lastOrders) {
     montlySales += order.totalPrice;
   }
-
+  console.log(orders);
   return (
     <div className="p-5 fade-in px-5 tablet:px-10">
       <div className="">
