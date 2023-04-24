@@ -26,9 +26,9 @@ function OrderTableBody({ order }) {
       >
         <div className="w-full flex gap-1">
           {/* <h3 className="font-semibold">{order.user.firstname}</h3> */}
-          <h3 className="hidden tablet:block font-semibold">
+          {/* <h3 className="hidden tablet:block font-semibold">
             {order.user.lastname}
-          </h3>
+          </h3> */}
         </div>
         <div className="w-full">
           <h3 className="text-textTertiary text-center text-sm">
